@@ -1,5 +1,6 @@
 package com.easv.takemehomeapp.Activities
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -31,9 +32,9 @@ class CodeScannerActivity : AppCompatActivity() {
     }
 
     private fun onClickLogin() {
-        /*val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         intent.putExtra("id", id)
-        startActivity(intent) */
+        startActivity(intent)
     }
 
     private fun codeScanner() {
