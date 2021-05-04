@@ -92,23 +92,25 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun onClickSms() {
-        val sendIntent = Intent(Intent.ACTION_VIEW)
-        sendIntent.data = Uri.parse("sms: ${lostUser.phone}")
-        sendIntent.putExtra(
+        var mapsLink: String = "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse("sms: ${lostUser.phone}")
+        intent.putExtra(
             "sms_body",
-            "Hello, this is my location via sms: Latitude: $currentLocationLat Longitute: $currentLocationLon"
+            "Hello, this is my location via sms: $mapsLink"
         )
-        startActivity(sendIntent)
+        startActivity(intent)
     }
 
     private fun onClickEmail() {
+        var mapsLink: String = "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "plain/text"
         val receivers = arrayOf(lostUser.email)
         intent.putExtra(Intent.EXTRA_EMAIL, receivers)
         intent.putExtra(
             Intent.EXTRA_TEXT,
-            "Hello, this is my location via email: Latitude: $currentLocationLat Longitude: $currentLocationLon"
+            "Hello, this is my location via email: $mapsLink"
         )
         startActivity(intent)
     }
@@ -165,7 +167,6 @@ class InfoActivity : AppCompatActivity() {
             myLocationListener!!
         )
     }
-
 
     override fun onBackPressed() {
         //app wont go back to login
