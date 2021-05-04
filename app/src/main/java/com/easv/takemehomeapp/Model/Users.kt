@@ -2,11 +2,11 @@ package com.easv.takemehomeapp.Model
 
 class Users {
 
-    var listOfUsers = arrayListOf<BEUser>(
-        BEUser(1, "firstName1", "lastName1", 123),
-        BEUser(2, "firstName2", "lastName2", 123),
-        BEUser(3, "firstName3", "lastName3", 123),
-        BEUser(123, "Lelota", "Yui", 12121212),
+    var listOfUsers = arrayListOf(
+        BEUser(1, "firstName1", "lastName1", 123, "a@b"),
+        BEUser(2, "firstName2", "lastName2", 123, "a@b"),
+        BEUser(3, "firstName3", "lastName3", 123, "a@b"),
+        BEUser(123, "Peter", "Parker", 12121212, "a@b"),
     )
 
     fun getLostUser(id: Int): BEUser {
@@ -16,6 +16,6 @@ class Users {
                     return i
             }
         }
-        return BEUser(0, "", "", 0)
+        return BEUser(0, "", "", 0, "")
     }
 }

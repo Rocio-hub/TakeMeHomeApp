@@ -14,6 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_name"
+        app:srcCompat="@drawable/drawing_icon_elderly_man_in_cloud_vector_18624479"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -34,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:clickable="true"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,35 +44,37 @@
 
     <ImageButton
         android:id="@+id/imageButton_sms"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
+        android:src="@drawable/ic_baseline_sms_24"
         app:layout_constraintEnd_toStartOf="@+id/imageButton_email"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <ImageButton
         android:id="@+id/imageButton_email"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
+        android:src="@drawable/ic_baseline_email_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageButton_sms"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:srcCompat="@tools:sample/avatars[11]" />
+        tools:srcCompat="@drawable/ic_baseline_email_24" />
 
     <ImageButton
         android:id="@+id/imageButton_map"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:srcCompat="@android:drawable/ic_menu_mapmode" />
+        android:src="@drawable/ic_baseline_map_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/imageButton_sms"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView1"
@@ -94,18 +97,22 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton_sms" />
 
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="e-mail"
         app:layout_constraintEnd_toEndOf="@+id/imageButton_email"
+        app:layout_constraintStart_toStartOf="@+id/imageButton_email"
         app:layout_constraintTop_toBottomOf="@+id/imageButton_email" />
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="See current location"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton_map"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton_email"
         app:layout_constraintStart_toEndOf="@+id/imageButton_map"
         app:layout_constraintTop_toTopOf="@+id/imageButton_map" />
 
@@ -119,4 +126,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_phone" />
+
+    <Button
+        android:id="@+id/button_additInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Additional info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_map" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_baseline_local_phone_24"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_phone"
+        app:layout_constraintEnd_toStartOf="@+id/textView_phone"
+        app:layout_constraintTop_toTopOf="@+id/textView_phone" />
 </androidx.constraintlayout.widget.ConstraintLayout>
