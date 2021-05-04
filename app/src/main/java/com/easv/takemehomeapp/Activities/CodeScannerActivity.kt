@@ -33,7 +33,7 @@ class CodeScannerActivity : AppCompatActivity() {
 
     private fun onClickLogin() {
         val intent = Intent(this, LoginActivity::class.java)
-        intent.putExtra("id", id)
+        intent.putExtra("lostUserId", id)
         startActivity(intent)
     }
 

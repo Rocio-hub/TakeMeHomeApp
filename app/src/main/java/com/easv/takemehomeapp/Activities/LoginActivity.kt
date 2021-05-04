@@ -9,6 +9,7 @@ import com.easv.takemehomeapp.Model.PrivilegedUsers
 import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_login.*
 private var privUsersDB : PrivilegedUsers = PrivilegedUsers()
+private var lostUserId: Int = 0
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +17,9 @@ class LoginActivity : AppCompatActivity() {
         textView_error.setVisibility(View.INVISIBLE)
 
         button_submit.setOnClickListener { v -> onClickSubmit() }
+
+        var extras: Bundle = intent.extras!!
+        lostUserId = extras.getInt("lostUserId")
     }
 
     private fun onClickSubmit() {
@@ -25,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
             if(privUsersDB.checkUserExists(username, password) != null){
                 val intent = Intent(this, InfoActivity::class.java)
                 intent.putExtra("user", privUsersDB.checkUserExists(username, password))
+                intent.putExtra("lostUserId", lostUserId)
                 startActivity(intent)
                 Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
             }
