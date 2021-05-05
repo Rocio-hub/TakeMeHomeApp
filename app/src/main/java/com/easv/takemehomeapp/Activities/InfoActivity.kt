@@ -92,7 +92,8 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun onClickSms() {
-        var mapsLink: String = "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
+        var mapsLink: String =
+            "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse("sms: ${lostUser.phone}")
         intent.putExtra(
@@ -103,7 +104,8 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun onClickEmail() {
-        var mapsLink: String = "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
+        var mapsLink =
+            "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "plain/text"
         val receivers = arrayOf(lostUser.email)
@@ -116,10 +118,10 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun onClickMap() {
-        // val intent = Intent(this, MapsActivity::class.java)
-        // intent.putExtra("currentLocationLat", currentLocationLat)
-        //intent.putExtra("currentLocationLon", currentLocationLon)
-        // startActivity(intent)
+        val intent = Intent(this, MapsActivity::class.java)
+        intent.putExtra("currentLocationLat", currentLocationLat)
+        intent.putExtra("currentLocationLon", currentLocationLon)
+        startActivity(intent)
     }
 
     private fun onClickAdditInfo() {
@@ -128,18 +130,18 @@ class InfoActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     private fun getLocation() {
-   /*     if (!isPermissionGiven())
-            Toast.makeText(this, "You dont have permission for using GPS", Toast.LENGTH_SHORT)
-                .show()
+        /*     if (!isPermissionGiven())
+                 Toast.makeText(this, "You dont have permission for using GPS", Toast.LENGTH_SHORT)
+                     .show()
 
-        val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+             val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+             val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
-        //handle cases: location can be null
-        if (location != null) {
-            currentLocationLat = location.latitude
-            currentLocationLon = location.longitude
-        }*/
+             //handle cases: location can be null
+             if (location != null) {
+                 currentLocationLat = location.latitude
+                 currentLocationLon = location.longitude
+             }*/
     }
 
     @SuppressLint("MissingPermission")
