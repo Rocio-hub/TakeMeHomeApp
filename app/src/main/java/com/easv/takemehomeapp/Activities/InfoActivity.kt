@@ -15,17 +15,17 @@ import android.text.util.Linkify
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.easv.takemehomeapp.Model.BELostUser
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
-import com.easv.takemehomeapp.Model.BEUser
-import com.easv.takemehomeapp.Model.Users
+import com.easv.takemehomeapp.Model.LostUsers
 import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_info.*
 
 
 class InfoActivity : AppCompatActivity() {
-    private var lostUsersDB: Users = Users()
+    private var lostUsersDB: LostUsers = LostUsers()
     private lateinit var loggedUser: BEPrivilegedUser
-    private lateinit var lostUser: BEUser
+    private lateinit var lostUser: BELostUser
     private var lostUserId: Int = 0
     private var currentLocationLat: Double = 0.0
     private var currentLocationLon: Double = 0.0
@@ -125,7 +125,9 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun onClickAdditInfo() {
-        TODO("Not yet implemented")
+       /* val intent = Intent(this, AdditInfoActivity::class.java)
+        intent.putExtra("lostUser", lostUser)
+        startActivity(intent)*/
     }
 
     @SuppressLint("MissingPermission")
