@@ -7,22 +7,28 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.easv.takemehomeapp.Model.PrivilegedUsers
 import com.easv.takemehomeapp.R
-import com.jakewharton.processphoenix.ProcessPhoenix
 import kotlinx.android.synthetic.main.activity_login.*
 
 private var privUsersDB: PrivilegedUsers = PrivilegedUsers()
-private var lostUserId: Int = 0
+//private var lostUserId: Int = 0
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         textView_error.setVisibility(View.INVISIBLE)
 
         button_submit.setOnClickListener { v -> onClickSubmit() }
+        textView_createAccount.setOnClickListener { v -> onClickCreateAccount() }
 
-        var extras: Bundle = intent.extras!!
-        lostUserId = extras.getInt("lostUserId")
+        //var extras: Bundle = intent.extras!!
+        //lostUserId = extras.getInt("lostUserId")
+    }
+
+    private fun onClickCreateAccount() {
+        val intent = Intent(this, CreateAccountActivity::class.java)
+        startActivity(intent)
     }
 
     private fun onClickSubmit() {
@@ -30,9 +36,8 @@ class LoginActivity : AppCompatActivity() {
             val username = editText_name.text.toString()
             val password = editText_password.text.toString()
             if (privUsersDB.checkUserExists(username, password) != null) {
-                val intent = Intent(this, InfoActivity::class.java)
-                intent.putExtra("user", privUsersDB.checkUserExists(username, password))
-                intent.putExtra("lostUserId", lostUserId)
+                val intent = Intent(this, CodeScannerActivity::class.java)
+                intent.putExtra("loggedUser", privUsersDB.checkUserExists(username, password))
                 startActivity(intent)
                 Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
             } else {
@@ -63,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onBackPressed() {
+    /*override fun onBackPressed() {
         ProcessPhoenix.triggerRebirth(getApplicationContext());
-    }
+    }*/
 }

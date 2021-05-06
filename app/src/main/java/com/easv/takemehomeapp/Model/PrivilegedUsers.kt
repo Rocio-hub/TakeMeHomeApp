@@ -48,4 +48,8 @@ class PrivilegedUsers {
         i++
         return null
     }
+
+    fun addNewUser(newUser: BEPrivilegedUser){
+        listOfNormalUsers.add(newUser)
+    }
 }

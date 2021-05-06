@@ -47,9 +47,10 @@ class InfoActivity : AppCompatActivity() {
         var extras: Bundle = intent.extras!! // We get the extras sent from the previous activity
         lostUserId = extras.getInt("lostUserId")
         lostUser = lostUsersDB.getLostUser(lostUserId)
-        loggedUser = extras.getSerializable("user") as BEPrivilegedUser
+        loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
         Toast.makeText(this, "User name is: ${loggedUser.username}", Toast.LENGTH_SHORT).show()
         Toast.makeText(this, "User role is: ${loggedUser.role}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "LostUser ID is: ${lostUserId}", Toast.LENGTH_SHORT).show()
 
         if (loggedUser.role != "police" && loggedUser.role != "medicalStaff") button_additInfo.setVisibility(
             View.GONE
@@ -170,10 +171,6 @@ class InfoActivity : AppCompatActivity() {
             0.0F,
             myLocationListener!!
         )
-    }
-
-    override fun onBackPressed() {
-        //app wont go back to login
     }
 
 }

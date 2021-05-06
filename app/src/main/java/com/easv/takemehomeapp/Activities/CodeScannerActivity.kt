@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
+import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_code_scanner.*
 
@@ -18,22 +19,27 @@ private const val CAMERA_REQUEST_CODE = 101
 class CodeScannerActivity : AppCompatActivity() {
 
     private lateinit var codeScanner: CodeScanner
-    private var id: Int = 0
+    private lateinit var loggedUser: BEPrivilegedUser
+    private var lostUserId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_code_scanner)
 
-        button_login.setVisibility(View.GONE)
-        button_login.setOnClickListener { v -> onClickLogin() }
+        button_viewScannedProfile.setVisibility(View.GONE)
+        button_viewScannedProfile.setOnClickListener { v -> onClickViewScannedProfile() }
+
+        var extras: Bundle = intent.extras!!
+        loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
 
         setUpPermissions()
         codeScanner()
     }
 
-    private fun onClickLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
-        intent.putExtra("lostUserId", id)
+    private fun onClickViewScannedProfile() {
+        val intent = Intent(this, InfoActivity::class.java)
+        intent.putExtra("lostUserId", lostUserId)
+        intent.putExtra("loggedUser", loggedUser)
         startActivity(intent)
     }
 
@@ -51,9 +57,9 @@ class CodeScannerActivity : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {
-                    textview.text = "Valid code. Please, log in to get access."
-                    id = Integer.parseInt(it.text)
-                    button_login.setVisibility(View.VISIBLE)
+                    textview.text = "Valid code."
+                    lostUserId = Integer.parseInt(it.text)
+                    button_viewScannedProfile.setVisibility(View.VISIBLE)
                 }
             }
 
