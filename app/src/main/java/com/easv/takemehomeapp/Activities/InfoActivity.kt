@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -20,9 +21,13 @@ import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.Model.LostUsers
 import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_info.*
+import java.io.File
 
 
 class InfoActivity : AppCompatActivity() {
+
+    private val REQUEST_CODE = 101
+
     private var lostUsersDB: LostUsers = LostUsers()
     private lateinit var loggedUser: BEPrivilegedUser
     private lateinit var lostUser: BELostUser
@@ -38,6 +43,7 @@ class InfoActivity : AppCompatActivity() {
         requestPermissions()
         startListening()
 
+        imageButton_profilePicture.setOnClickListener { v -> onClickProfilePicture() }
         textView_phone.setOnClickListener { v -> onClickPhone() }
         imageButton_sms.setOnClickListener { v -> onClickSms() }
         imageButton_email.setOnClickListener { v -> onClickEmail() }
@@ -86,6 +92,13 @@ class InfoActivity : AppCompatActivity() {
         }
     }
 
+    private fun onClickProfilePicture() {
+        if(loggedUser.role.equals("police")) {
+            val intent = Intent(this, CameraActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE)
+        }
+    }
+
     private fun onClickPhone() {
         val intent = Intent(Intent.ACTION_DIAL)
         intent.data = Uri.parse("tel: ${lostUser.phone}")
@@ -126,9 +139,9 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun onClickAdditInfo() {
-       /* val intent = Intent(this, AdditInfoActivity::class.java)
-        intent.putExtra("lostUser", lostUser)
-        startActivity(intent)*/
+        /* val intent = Intent(this, AdditInfoActivity::class.java)
+         intent.putExtra("lostUser", lostUser)
+         startActivity(intent)*/
     }
 
     @SuppressLint("MissingPermission")
@@ -173,4 +186,16 @@ class InfoActivity : AppCompatActivity() {
         )
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) { //Method that will check that the CameraActivity will return a picture and assign it to our friend as well as display it in our DetailsActivity
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                var newPicture = data?.extras?.getSerializable("newPicture") as File
+                if (newPicture != null) {
+                    imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
+                    //lostUser.image = newPicture
+                }
+            }
+        }
+    }
 }

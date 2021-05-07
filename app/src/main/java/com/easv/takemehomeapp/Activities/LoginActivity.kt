@@ -46,7 +46,6 @@ class LoginActivity : AppCompatActivity() {
                     textView_error.setVisibility(View.INVISIBLE)
                 }, 4000)
             }
-
         } else {
             textView_error.setVisibility(View.VISIBLE)
             textView_error.postDelayed({
