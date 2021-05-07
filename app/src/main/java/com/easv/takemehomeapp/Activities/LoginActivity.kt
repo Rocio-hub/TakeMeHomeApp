@@ -33,9 +33,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun onClickSubmit() {
         if (validateInput()) {
-            val username = editText_name.text.toString()
+            val username = editText_user.text.toString()
             val password = editText_password.text.toString()
             if (privUsersDB.checkUserExists(username, password) != null) {
+                editText_user.getText().clear()
+                editText_password.getText().clear()
                 val intent = Intent(this, CodeScannerActivity::class.java)
                 intent.putExtra("loggedUser", privUsersDB.checkUserExists(username, password))
                 startActivity(intent)
@@ -56,8 +58,8 @@ class LoginActivity : AppCompatActivity() {
 
     // Checking if the input in form is valid
     fun validateInput(): Boolean {
-        if (editText_name.text.toString() == "") {
-            editText_name.error = "Please, enter a username"
+        if (editText_user.text.toString() == "") {
+            editText_user.error = "Please, enter a username"
             return false
         }
         if (editText_password.text.toString() == "") {

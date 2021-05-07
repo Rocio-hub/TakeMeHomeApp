@@ -58,7 +58,7 @@ class InfoActivity : AppCompatActivity() {
         Toast.makeText(this, "User role is: ${loggedUser.role}", Toast.LENGTH_SHORT).show()
         Toast.makeText(this, "LostUser ID is: ${lostUserId}", Toast.LENGTH_SHORT).show()
 
-        if (loggedUser.role != "police" && loggedUser.role != "medicalStaff") button_additInfo.setVisibility(
+        if (loggedUser.role != "police" && loggedUser.role != "doctor") button_additInfo.setVisibility(
             View.GONE
         )
 
@@ -139,9 +139,10 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun onClickAdditInfo() {
-        /* val intent = Intent(this, AdditInfoActivity::class.java)
+         val intent = Intent(this, AdditionalInfoActivity::class.java)
          intent.putExtra("lostUser", lostUser)
-         startActivity(intent)*/
+         intent.putExtra("loggedUser", loggedUser)
+         startActivity(intent)
     }
 
     @SuppressLint("MissingPermission")

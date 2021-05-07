@@ -33,7 +33,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editText_name"
+            android:id="@+id/editText_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
