@@ -2,7 +2,7 @@ package com.easv.takemehomeapp.Model
 
 class PrivilegedUsers {
 
-    var listOfPolice = arrayListOf(
+    /*var listOfPolice = arrayListOf(
         BEPrivilegedUser(1, "AAA", "p1", "police"),
         BEPrivilegedUser(2, "B12345", "password", "police"),
         BEPrivilegedUser(3, "C12345", "password", "police")
@@ -51,5 +51,5 @@ class PrivilegedUsers {
 
     fun addNewUser(newUser: BEPrivilegedUser){
         listOfNormalUsers.add(newUser)
-    }
+    }*/
 }

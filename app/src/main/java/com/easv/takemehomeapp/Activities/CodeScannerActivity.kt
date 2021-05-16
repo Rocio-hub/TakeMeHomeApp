@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
+import com.easv.takemehomeapp.Data.IUserDAO
+import com.easv.takemehomeapp.Data.UserDAO_Impl
+import com.easv.takemehomeapp.Model.BELostUser
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_code_scanner.*
@@ -20,14 +23,18 @@ class CodeScannerActivity : AppCompatActivity() {
 
     private lateinit var codeScanner: CodeScanner
     private lateinit var loggedUser: BEPrivilegedUser
-    private var lostUserId: Int = 0
+    private lateinit var lostUser : BELostUser
+    private lateinit var lostUserDB: IUserDAO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_code_scanner)
 
-        button_viewScannedProfile.setVisibility(View.GONE)
-        button_viewScannedProfile.setOnClickListener { v -> onClickViewScannedProfile() }
+        lostUserDB = UserDAO_Impl(this)
+
+        button_go.setVisibility(View.GONE)
+        button_go.setOnClickListener { v -> onClickGo() }
+
 
         var extras: Bundle = intent.extras!!
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
@@ -36,14 +43,15 @@ class CodeScannerActivity : AppCompatActivity() {
         codeScanner()
     }
 
-    private fun onClickViewScannedProfile() {
-        val intent = Intent(this, InfoActivity::class.java)
-        intent.putExtra("lostUserId", lostUserId)
+    fun onClickGo() {
+        var intent = Intent(this, InfoActivity::class.java)
         intent.putExtra("loggedUser", loggedUser)
+        intent.putExtra("lostUser", lostUser)
         startActivity(intent)
     }
 
     private fun codeScanner() {
+
         codeScanner = CodeScanner(this, scanner_view)
 
         codeScanner.apply {
@@ -57,9 +65,14 @@ class CodeScannerActivity : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {
-                    textview.text = "Valid code."
-                    lostUserId = Integer.parseInt(it.text)
-                    button_viewScannedProfile.setVisibility(View.VISIBLE)
+                    var id = Integer.parseInt(it.text)
+                    lostUser = lostUserDB.getLostUserById(id)
+                    if(lostUser.id > 0) {
+                        button_go.setVisibility(View.VISIBLE)
+                    }
+                    else{
+                        textview.text = "Invalid code. Try again."
+                    }
                 }
             }
 
@@ -114,4 +127,5 @@ class CodeScannerActivity : AppCompatActivity() {
             }
         }
     }
+
 }

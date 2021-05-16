@@ -42,6 +42,7 @@ class InfoActivity : AppCompatActivity() {
 
         requestPermissions()
         startListening()
+        getLocation()
 
         imageButton_profilePicture.setOnClickListener { v -> onClickProfilePicture() }
         textView_phone.setOnClickListener { v -> onClickPhone() }
@@ -51,8 +52,8 @@ class InfoActivity : AppCompatActivity() {
         button_additInfo.setOnClickListener { v -> onClickAdditInfo() }
 
         var extras: Bundle = intent.extras!! // We get the extras sent from the previous activity
-        lostUserId = extras.getInt("lostUserId")
-        lostUser = lostUsersDB.getLostUser(lostUserId)
+
+        lostUser = extras.getSerializable("lostUser") as BELostUser
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
         Toast.makeText(this, "User name is: ${loggedUser.username}", Toast.LENGTH_SHORT).show()
         Toast.makeText(this, "User role is: ${loggedUser.role}", Toast.LENGTH_SHORT).show()
@@ -93,7 +94,7 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun onClickProfilePicture() {
-        if(loggedUser.role.equals("police")) {
+        if (loggedUser.role.equals("police")) {
             val intent = Intent(this, CameraActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE)
         }
@@ -139,26 +140,26 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun onClickAdditInfo() {
-         val intent = Intent(this, AdditionalInfoActivity::class.java)
-         intent.putExtra("lostUser", lostUser)
-         intent.putExtra("loggedUser", loggedUser)
-         startActivity(intent)
+        val intent = Intent(this, AdditionalInfoActivity::class.java)
+        intent.putExtra("lostUser", lostUser)
+        intent.putExtra("loggedUser", loggedUser)
+        startActivity(intent)
     }
 
     @SuppressLint("MissingPermission")
     private fun getLocation() {
-        /*     if (!isPermissionGiven())
-                 Toast.makeText(this, "You dont have permission for using GPS", Toast.LENGTH_SHORT)
-                     .show()
+        if (!isPermissionGiven())
+            Toast.makeText(this, "You dont have permission for using GPS", Toast.LENGTH_SHORT)
+                .show()
 
-             val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-             val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
-             //handle cases: location can be null
-             if (location != null) {
-                 currentLocationLat = location.latitude
-                 currentLocationLon = location.longitude
-             }*/
+        //handle cases: location can be null
+        if (location != null) {
+            currentLocationLat = location.latitude
+            currentLocationLon = location.longitude
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -187,7 +188,11 @@ class InfoActivity : AppCompatActivity() {
         )
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) { //Method that will check that the CameraActivity will return a picture and assign it to our friend as well as display it in our DetailsActivity
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) { //Method that will check that the CameraActivity will return a picture and assign it to our friend as well as display it in our DetailsActivity
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE) {
             if (resultCode == RESULT_OK) {

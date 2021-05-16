@@ -30,7 +30,7 @@ class CreateAccountActivity : AppCompatActivity() {
                 newUser.username = editText_username.text.toString()
                 newUser.password = editText_password.text.toString()
                 newUser.role = "normal"
-                privilegedUsersDB.addNewUser(newUser)
+               // privilegedUsersDB.addNewUser(newUser)
             intent.putExtra("loggedUser", newUser)
             startActivity(intent)
         }
