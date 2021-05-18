@@ -13,6 +13,8 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.util.Linkify
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -203,5 +205,38 @@ class InfoActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+
+        var item: MenuItem = menu!!.findItem(R.id.action_newUser)
+        if(loggedUser.role=="doctor" || loggedUser.role=="normal") item.setVisible(false)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.getItemId()
+
+        when(id) {
+            R.id.action_newUser -> {
+                Toast.makeText(this, "Action NewUser selected", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, CreateAccountActivity::class.java)
+                intent.putExtra("loggedUser", loggedUser)
+                startActivity(intent)
+                true
+            }
+            R.id.action_myProfile -> {
+                Toast.makeText(this, "Action MyProfile selected", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_about -> {
+                Toast.makeText(this, "Action About selected", Toast.LENGTH_SHORT).show()
+                true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

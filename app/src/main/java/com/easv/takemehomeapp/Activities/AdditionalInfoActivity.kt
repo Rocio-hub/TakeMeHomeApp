@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.easv.takemehomeapp.Model.BELostUser
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.R
-import kotlinx.android.synthetic.main.activity_additional_info.*
 
 class AdditionalInfoActivity : AppCompatActivity() {
 
@@ -20,9 +19,9 @@ class AdditionalInfoActivity : AppCompatActivity() {
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
         lostUser = extras.getSerializable("lostUser") as BELostUser
 
-        textView_firstName.text = "First Name: ${lostUser.firstName}"
-        textView_lastName.text = "Last Name: ${lostUser.lastName}"
-        textView_address.text = "Address: ${lostUser.phone}"
+        //textView_firstName.text = "First Name: ${lostUser.firstName}"
+        //textView_lastName.text = "Last Name: ${lostUser.lastName}"
+        //textView_address.text = "Address: ${lostUser.phone}"
 
         if(loggedUser.role.equals("police")){
             //TODO info only available for police

@@ -43,9 +43,9 @@ class LoginActivity : AppCompatActivity() {
         usersDB.insertLostUser(BELostUser(1, "Peter", "Parker", 111, "p@p"))
         usersDB.insertLostUser(BELostUser(2, "Scarlet", "Witch", 222, "s@w"))
         usersDB.insertLostUser(BELostUser(3, "Captain", "America", 333, "c@a"))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(1, "pol1", "p", "police"))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(2, "doc1", "p", "doctor"))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "nor1", "p", "normal"))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(1, "pol1", "p", "FIRSTNAME1", "LASTNAME1", "police", "PICTURE"))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(2, "doc1", "p", "FIRSTNAME2", "LASTNAME2", "doctor", "PICTURE"))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "nor1", "p", "FIRSTNAME3", "LASTNAME3", "normal", "PICTURE"))
     }
 
     private fun onClickCreateAccount() {

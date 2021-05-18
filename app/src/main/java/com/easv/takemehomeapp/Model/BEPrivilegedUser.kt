@@ -6,5 +6,8 @@ class BEPrivilegedUser (
     var id: Int,
     var username: String,
     var password: String,
-    var role: String
+    var firstName: String,
+    var lastName: String,
+    var role: String,
+    var picture: String,
 ): Serializable

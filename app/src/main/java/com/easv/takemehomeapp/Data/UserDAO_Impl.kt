@@ -9,10 +9,10 @@ import com.easv.takemehomeapp.Model.BELostUser
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
 
 class UserDAO_Impl(context: Context) :
-    SQLiteOpenHelper(context, "TakeMeHomeDB", null, 3), IUserDAO {
+    SQLiteOpenHelper(context, "TakeMeHomeDB", null, 4), IUserDAO {
 
     override fun onCreate(db: SQLiteDatabase?) {
-        db?.execSQL("CREATE TABLE PrivilegedUser (id INTEGER PRIMARY KEY, username TEXT, password TEXT, role TEXT)")
+        db?.execSQL("CREATE TABLE PrivilegedUser (id INTEGER PRIMARY KEY, username TEXT, password TEXT, firstName TEXT, lastName TEXT, role TEXT, picture TEXT)")
         db?.execSQL("CREATE TABLE LostUser (id INTEGER PRIMARY KEY, firstName TEXT, lastName TEXT, phone INTEGER UNIQUE, email TEXT UNIQUE)")
 
     }
@@ -30,7 +30,22 @@ class UserDAO_Impl(context: Context) :
         val cv = ContentValues()
         cv.put("username", p.username)
         cv.put("password", p.password)
+        cv.put("firstName", p.firstName)
+        cv.put("lastName", p.lastName)
         cv.put("role", p.role)
+        cv.put("picture", p.picture)
+        db.insert("PrivilegedUser", null, cv)
+    }
+
+    override fun createPrivilegedUser(p: BEPrivilegedUser) {
+        val db = this.writableDatabase
+        val cv = ContentValues()
+        cv.put("username", p.username)
+        cv.put("password", p.password)
+        cv.put("firstName", p.firstName)
+        cv.put("lastName", p.lastName)
+        cv.put("role", p.role)
+        cv.put("picture", p.picture)
         db.insert("PrivilegedUser", null, cv)
     }
 
@@ -38,8 +53,8 @@ class UserDAO_Impl(context: Context) :
         val db = this.readableDatabase
         var cursor = db.query(
             "PrivilegedUser",
-            arrayOf("id", "username", "password", "role"),
-            "username = '$username' AND password = '$password'",
+            arrayOf("id", "username", "password", "firstName", "lastName", "role", "picture"),
+            "username LIKE '$username' AND password LIKE '$password'",
             null,
             null,
             null,
@@ -60,8 +75,11 @@ class UserDAO_Impl(context: Context) :
                 val id = cursor.getInt(cursor.getColumnIndex("id"))
                 val username = cursor.getString(cursor.getColumnIndex("username"))
                 val password = cursor.getString(cursor.getColumnIndex("password"))
+                val firstName = cursor.getString(cursor.getColumnIndex("firstName"))
+                val lastName = cursor.getString(cursor.getColumnIndex("lastName"))
                 val role = cursor.getString(cursor.getColumnIndex("role"))
-                myList.add(BEPrivilegedUser(id, username, password, role))
+                val picture = cursor.getString(cursor.getColumnIndex("picture"))
+                myList.add(BEPrivilegedUser(id, username, password, firstName, lastName, role, picture))
             } while (cursor.moveToNext())
         }
         return myList

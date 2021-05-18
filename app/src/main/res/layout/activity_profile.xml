@@ -4,91 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.AdditionalInfoActivity">
+    tools:context="Activities.InfoActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/drawing_icon_elderly_man_in_cloud_vector_18624479" />
-
-    <LinearLayout
-        android:id="@+id/linearLay"
+    <RelativeLayout
+        android:id="@+id/relative_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
+        android:background="@drawable/grad">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:id="@+id/profilePicture_layout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/teal_700"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center_horizontal"
-                    android:text="PERSONAL INFORMATION"
-                    android:textColor="@color/white"
-                    android:textSize="23sp" />
-
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView_profilePicture"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/grad"
+                android:padding="3dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/mockpicture" />
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/TextView_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/teal_200"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:layout_below="@+id/profilePicture_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15sp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            tools:text="Peter Parker" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center_horizontal"
-                    android:text="MEDICAL INFORMATION"
-                    android:textColor="@color/white"
-                    android:textSize="23sp" />
+        <TextView
+            android:id="@+id/tv_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TextView_name"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif"
+            android:paddingBottom="10dp"
+            android:textAllCaps="true"
+            android:textColor="@color/purple_200"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="POLICE" />
 
-            </LinearLayout>
+    </RelativeLayout>
 
-        </RelativeLayout>
 
-    </LinearLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/linearLay">
+        android:layout_below="@+id/relative_layout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,12 +88,42 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/gradEnd"
+                    android:textSize="13sp"
+                    tools:text="Username" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    tools:text="ABC1234" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gradEnd" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Complete name"
                     android:textColor="@color/gradEnd"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_username"
+                    android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -137,39 +148,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address"
                     android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    tools:text="AAA" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/gradEnd" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    tools:text="CPR" />
 
                 <TextView
                     android:id="@+id/tv_cpr"
@@ -178,7 +159,7 @@
                     android:fontFamily="sans-serif-light"
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    tools:text="AAA" />
+                    tools:text="012345679876" />
 
                 <View
                     android:layout_width="match_parent"
@@ -197,9 +178,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CPR"
                     android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    tools:text="Police station" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -207,7 +188,7 @@
                     android:fontFamily="sans-serif-light"
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    tools:text="AAA" />
+                    tools:text="Esbjerg" />
 
                 <View
                     android:layout_width="match_parent"

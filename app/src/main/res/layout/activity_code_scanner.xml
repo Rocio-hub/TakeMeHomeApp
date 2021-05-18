@@ -32,7 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview"
         android:layout_centerHorizontal="true"
-        android:onClick="onClickGo"
         android:text="Go" />
 
 </RelativeLayout>
