@@ -39,13 +39,17 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun insertTestData() {
+        //var listPhones = listOf(1,2,3)
+        //var listCurrentMedication = listOf("medication", "b", "c")
+        //var listAllergies = listOf("allergies", "b", "c")
+        //var listDiseases = listOf("diseases", "b", "c")
         usersDB.emptyDb()
-        usersDB.insertLostUser(BELostUser(1, "Peter", "Parker", 111, "p@p"))
-        usersDB.insertLostUser(BELostUser(2, "Scarlet", "Witch", 222, "s@w"))
-        usersDB.insertLostUser(BELostUser(3, "Captain", "America", 333, "c@a"))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(1, "pol1", "p", "FIRSTNAME1", "LASTNAME1", "police", "PICTURE"))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(2, "doc1", "p", "FIRSTNAME2", "LASTNAME2", "doctor", "PICTURE"))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "nor1", "p", "FIRSTNAME3", "LASTNAME3", "normal", "PICTURE"))
+        usersDB.insertLostUser(BELostUser(1, "Peter", "Parker", 123, "email", "address", 123, "medication", "allergies", "diseases", "picture"))
+        usersDB.insertLostUser(BELostUser(2, "Scarlet", "Witch", 123, "email", "address", 456, "medication", "allergies", "diseases", "picture"))
+        usersDB.insertLostUser(BELostUser(3, "Captain", "America", 123, "email", "address", 789, "medication", "allergies", "diseases", "picture"))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(1, "pol1", "p", "FIRSTNAME1", "LASTNAME1", 123, "police", "station", "PICTURE"))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(2, "doc1", "p", "FIRSTNAME2", "LASTNAME2", 456, "doctor", "station", "PICTURE"))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "nor1", "p", "FIRSTNAME3", "LASTNAME3", 789, "normal", "station", "PICTURE"))
     }
 
     private fun onClickCreateAccount() {

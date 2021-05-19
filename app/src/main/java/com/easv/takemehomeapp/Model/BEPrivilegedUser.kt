@@ -8,6 +8,8 @@ class BEPrivilegedUser (
     var password: String,
     var firstName: String,
     var lastName: String,
+    var CPR: Int,
     var role: String,
+    var station: String,
     var picture: String,
 ): Serializable

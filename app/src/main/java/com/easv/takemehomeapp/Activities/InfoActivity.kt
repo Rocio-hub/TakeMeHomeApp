@@ -229,11 +229,14 @@ class InfoActivity : AppCompatActivity() {
             R.id.action_myProfile -> {
                 Toast.makeText(this, "Action MyProfile selected", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, ProfileActivity::class.java)
+                intent.putExtra("loggedUser", loggedUser)
                 startActivity(intent)
                 true
             }
             R.id.action_about -> {
                 Toast.makeText(this, "Action About selected", Toast.LENGTH_SHORT).show()
+                //val intent = Intent(this, AboutUsActivity::class.java)
+                //startActivity(intent)
                 true
             }
         }

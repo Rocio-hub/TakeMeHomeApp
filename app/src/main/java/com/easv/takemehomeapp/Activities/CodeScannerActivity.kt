@@ -70,10 +70,11 @@ class CodeScannerActivity : AppCompatActivity() {
                     var id = Integer.parseInt(it.text)
                     lostUser = lostUserDB.getLostUserById(id)
                     if(lostUser.id > 0) {
+                        scan_label.setText("Scan finished.")
                         button_go.setVisibility(View.VISIBLE)
                     }
                     else{
-                        textview.text = "Invalid code. Try again."
+                        scan_label.text = "Invalid code. Try again."
                     }
                 }
             }
@@ -151,10 +152,15 @@ class CodeScannerActivity : AppCompatActivity() {
             }
             R.id.action_myProfile -> {
                 Toast.makeText(this, "Action MyProfile selected", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, ProfileActivity::class.java)
+                intent.putExtra("loggedUser", loggedUser)
+                startActivity(intent)
                 true
             }
             R.id.action_about -> {
                 Toast.makeText(this, "Action About selected", Toast.LENGTH_SHORT).show()
+                //val intent = Intent(this, AboutUsActivity::class.java)
+                //startActivity(intent)
                 true
             }
         }

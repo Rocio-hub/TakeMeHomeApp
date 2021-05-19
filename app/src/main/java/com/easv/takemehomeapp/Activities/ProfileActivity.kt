@@ -17,9 +17,12 @@ class ProfileActivity : AppCompatActivity() {
         var extras: Bundle = intent.extras!! // We get the extras sent from the previous activity
 
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
+        TextView_name.setText(loggedUser.firstName)
+        textView_username.setText(loggedUser.username)
+        tv_name.setText("${loggedUser.firstName} ${loggedUser.lastName}")
+        textView_role.setText("${loggedUser.role}")
+        textView_cpr.setText(loggedUser.CPR)
+        textView_station.setText(loggedUser.station)
         //imageView_profilePicture.setImageDrawable()
-        tv_username.text = loggedUser.username
-        tv_name.text = "Get name from loggeduser"
-        tv_cpr.text = "Get CPR form loggeduser"
     }
 }

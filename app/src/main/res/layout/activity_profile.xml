@@ -48,7 +48,7 @@
 
 
         <TextView
-            android:id="@+id/tv_role"
+            android:id="@+id/textView_role"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/TextView_name"
@@ -62,9 +62,6 @@
             tools:text="POLICE" />
 
     </RelativeLayout>
-
-
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -88,12 +85,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Username"
                     android:textColor="@color/gradEnd"
-                    android:textSize="13sp"
-                    tools:text="Username" />
+                    android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_username"
+                    android:id="@+id/textView_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -148,12 +145,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="CPR"
                     android:textColor="@color/gradEnd"
-                    android:textSize="13sp"
-                    tools:text="CPR" />
+                    android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_cpr"
+                    android:id="@+id/textView_cpr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -178,11 +175,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Police station"
                     android:textColor="@color/gradEnd"
-                    android:textSize="13sp"
-                    tools:text="Police station" />
+                    android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/textView_station"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"

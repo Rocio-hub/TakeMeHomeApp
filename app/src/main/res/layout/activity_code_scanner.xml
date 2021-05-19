@@ -17,7 +17,7 @@
         app:maskColor="#6C000000" />
 
     <TextView
-        android:id="@+id/textview"
+        android:id="@+id/scan_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/scanner_view"
@@ -30,7 +30,7 @@
         android:id="@+id/button_go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textview"
+        android:layout_below="@+id/scan_label"
         android:layout_centerHorizontal="true"
         android:text="Go" />
 
