@@ -4,123 +4,132 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.AdditionalInfoActivity">
+    tools:context="Activities.InfoActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/drawing_icon_elderly_man_in_cloud_vector_18624479" />
-
-    <LinearLayout
-        android:id="@+id/linearLay"
+    <RelativeLayout
+        android:id="@+id/relLay_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
+        android:background="@drawable/grad_login"
+        android:paddingBottom="16dp">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:id="@+id/profilePicture_layout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/teal_700"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center_horizontal"
-                    android:text="PERSONAL INFORMATION"
-                    android:textColor="@color/white"
-                    android:textSize="23sp" />
-
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView_profilePicture"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/grad_login"
+                android:padding="3dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/mockpicture" />
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView_username"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/teal_200"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:layout_below="@+id/profilePicture_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15sp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            tools:text="Peter Parker" />
 
-            <LinearLayout
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@color/dust"
+        android:gravity="center"
+        android:layout_below="@id/relLay_top">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="PERSONAL INFORMATION"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center_horizontal"
-                    android:text="MEDICAL INFORMATION"
-                    android:textColor="@color/white"
-                    android:textSize="23sp" />
+        </LinearLayout>
 
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/linearLay">
+        android:layout_below="@+id/banner">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/info1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical" >
 
                 <TextView
+                    android:id="@+id/textView_title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Complete name"
+                    android:text="CPR"
                     android:textColor="@color/gradEnd"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/textView_username"
+                    android:id="@+id/textView_field1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    tools:text="Peter Parker" />
+                    tools:text="012345679876" />
+
+                <Button
+                    android:id="@+id/button_allergies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="List of allergies"
+                    android:textColor="@color/gradEnd"
+                    android:textSize="13sp"
+                    android:onClick="onClickAllergies"
+                    android:layout_gravity="center_horizontal"/>
 
                 <View
+                    android:id="@+id/line1"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="15dp"
@@ -129,45 +138,17 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/info2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:orientation="vertical">
+                android:orientation="vertical" >
 
                 <TextView
+                    android:id="@+id/textView_title2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Address"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    tools:text="AAA" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/gradEnd" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
                     android:textColor="@color/gradEnd"
                     android:textSize="13sp" />
 
@@ -178,9 +159,20 @@
                     android:fontFamily="sans-serif-light"
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    tools:text="AAA" />
+                    tools:text="Address" />
+
+                <Button
+                    android:id="@+id/button_diseases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="List of diseases"
+                    android:textColor="@color/gradEnd"
+                    android:textSize="13sp"
+                    android:onClick="onClickDiseases"
+                    android:layout_gravity="center_horizontal"/>
 
                 <View
+                    android:id="@+id/line2"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="15dp"
@@ -189,27 +181,29 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/info3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
+                android:layout_marginTop="20dp"
+                android:orientation="vertical" android:layout_gravity="">
 
-                <TextView
+                <Spinner
+                    android:id="@+id/spinner_phoneList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/button_medication"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CPR"
+                    android:text="List of medication"
                     android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    tools:text="AAA" />
+                    android:textSize="13sp"
+                    android:onClick="onClickMedication"
+                    android:layout_gravity="center_horizontal"/>
 
                 <View
+                    android:id="@+id/line3"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="15dp"
@@ -217,6 +211,38 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/info4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView_title4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SOMETHINGELSE"
+                    android:textColor="@color/gradEnd"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/textView_field4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    tools:text="Esbjerg" />
+
+                <View
+                    android:id="@+id/line4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gradEnd" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

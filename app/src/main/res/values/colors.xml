@@ -12,4 +12,10 @@
     <color name="gradEnd">#67EFC8</color>
     <color name="solidCircle">#80FFFFFF</color>
     <color name="circleBorder">#30FFFFFF</color>
+
+    <color name="green">#DAE7DD</color>
+    <color name="beige">#DBC39A</color>
+    <color name="pink">#F7C9B6</color>
+    <color name="dust">#DACAC4</color>
+    <color name="dark">#433c39</color>
 </resources>

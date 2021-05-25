@@ -33,7 +33,6 @@ class InfoActivity : AppCompatActivity() {
     private var lostUsersDB: LostUsers = LostUsers()
     private lateinit var loggedUser: BEPrivilegedUser
     private lateinit var lostUser: BELostUser
-    private var lostUserId: Int = 0
     private var currentLocationLat: Double = 0.0
     private var currentLocationLon: Double = 0.0
     private var myLocationListener: LocationListener? = null //Initialize the Location Listener
@@ -59,7 +58,7 @@ class InfoActivity : AppCompatActivity() {
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
         Toast.makeText(this, "User name is: ${loggedUser.username}", Toast.LENGTH_SHORT).show()
         Toast.makeText(this, "User role is: ${loggedUser.role}", Toast.LENGTH_SHORT).show()
-        Toast.makeText(this, "LostUser ID is: ${lostUserId}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "LostUser ID is: ${lostUser.id}", Toast.LENGTH_SHORT).show()
 
         if (loggedUser.role != "police" && loggedUser.role != "doctor") button_additInfo.setVisibility(
             View.GONE
@@ -87,7 +86,7 @@ class InfoActivity : AppCompatActivity() {
 
     private fun getUserInfo() {
         if (lostUser != null) {
-            textView_name.text = "${lostUser.firstName} ${lostUser.lastName}"
+            textView_username.text = "${lostUser.firstName} ${lostUser.lastName}"
             textView_phone.text = "${lostUser.phone}"
             Linkify.addLinks(textView_phone, Linkify.ALL);
         } else {

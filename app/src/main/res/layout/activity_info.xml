@@ -7,7 +7,7 @@
     tools:context="Activities.InfoActivity">
 
     <TextView
-        android:id="@+id/textView_name"
+        android:id="@+id/textView_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -144,5 +144,5 @@
         android:src="@drawable/drawing_icon_elderly_man_in_cloud_vector_18624479"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_name" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_username" />
 </androidx.constraintlayout.widget.ConstraintLayout>
