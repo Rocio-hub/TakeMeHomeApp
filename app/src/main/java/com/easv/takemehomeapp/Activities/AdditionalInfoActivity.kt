@@ -64,23 +64,32 @@ class AdditionalInfoActivity : AppCompatActivity() {
             textView_field4.isVisible = false
         }
 
-        phoneList = listOf("List of phones", "1234", "2345", "3456", "4567")
-        allergieList = listOf("List of allergies", "1234", "2345", "3456", "4567")
-        medicationList = listOf("List of medication", "1234", "2345", "3456", "4567")
-        diseaseList = listOf("List of disease", "1234", "2345", "3456", "4567")
+        phoneList = lostUser.phoneList.split(" ")
+        allergieList = lostUser.allergiesList.split(" ")
+        medicationList = lostUser.medicationList.split(" ")
+        diseaseList = lostUser.diseasesList.split(" ")
         setPhoneSpinner()
     }
 
     private fun onClickAllergies() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, ListsActivity::class.java)
+        intent.putExtra("lostUser", lostUser)
+        intent.putExtra("listName", "allergies")
+        startActivity(intent)
     }
 
     private fun onClickDiseases() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, ListsActivity::class.java)
+        intent.putExtra("lostUser", lostUser)
+        intent.putExtra("listName", "diseases")
+        startActivity(intent)
     }
 
     private fun onClickMedication() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, ListsActivity::class.java)
+        intent.putExtra("lostUser", lostUser)
+        intent.putExtra("listName", "medication")
+        startActivity(intent)
     }
 
     private fun setPhoneSpinner() {
