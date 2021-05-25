@@ -220,7 +220,7 @@ class InfoActivity : AppCompatActivity() {
         when(id) {
             R.id.action_newUser -> {
                 Toast.makeText(this, "Action NewUser selected", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, CreateAccountActivity::class.java)
+                val intent = Intent(this, CreateLostUserAccountActivity::class.java)
                 intent.putExtra("loggedUser", loggedUser)
                 startActivity(intent)
                 true

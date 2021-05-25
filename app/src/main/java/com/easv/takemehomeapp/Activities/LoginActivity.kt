@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onClickCreateAccount() {
-        val intent = Intent(this, CreateAccountActivity::class.java)
+        val intent = Intent(this, CreateLostUserAccountActivity::class.java)
         startActivity(intent)
     }
 
