@@ -87,7 +87,7 @@ class InfoActivity : AppCompatActivity() {
     private fun getUserInfo() {
         if (lostUser != null) {
             textView_username.text = "${lostUser.firstName} ${lostUser.lastName}"
-            textView_phone.text = "${lostUser.phone}"
+            textView_phone.text = "${lostUser.phoneList[0]}"
             Linkify.addLinks(textView_phone, Linkify.ALL);
         } else {
             Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
@@ -103,7 +103,7 @@ class InfoActivity : AppCompatActivity() {
 
     private fun onClickPhone() {
         val intent = Intent(Intent.ACTION_DIAL)
-        intent.data = Uri.parse("tel: ${lostUser.phone}")
+        intent.data = Uri.parse("tel: ${lostUser.phoneList.split(" ").map { it.trim() }}")
         startActivity(intent)
     }
 
@@ -111,7 +111,7 @@ class InfoActivity : AppCompatActivity() {
         var mapsLink: String =
             "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse("sms: ${lostUser.phone}")
+        intent.data = Uri.parse("sms: ${lostUser.phoneList.split(" ").map { it.trim() }}")
         intent.putExtra(
             "sms_body",
             "Hello, this is my location via sms: $mapsLink"

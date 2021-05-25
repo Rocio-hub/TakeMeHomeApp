@@ -13,6 +13,7 @@ interface IUserDAO {
     //Lost users
     fun getLostUserById(id: Int): BELostUser
     fun insertLostUser(l: BELostUser) //add mock data
+    fun createLostUser(l: BELostUser) //add real user
 
     //Both
     fun emptyDb()
