@@ -1,6 +1,7 @@
 package com.easv.takemehomeapp.Activities
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -34,6 +35,8 @@ class AdditionalInfoActivity : AppCompatActivity() {
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
         lostUser = extras.getSerializable("lostUser") as BELostUser
 
+        getMockPictures()
+
         textView_username.setText("${lostUser.firstName} ${lostUser.lastName}")
 
         if (loggedUser.role.equals("police")) {
@@ -45,7 +48,7 @@ class AdditionalInfoActivity : AppCompatActivity() {
             button_medication.isVisible = false
         }
 
-        if(loggedUser.role.equals("doctor")) {
+        if (loggedUser.role.equals("doctor")) {
             label.setText("MEDICAL INFORMATION")
             line1.isVisible = false
             line2.isVisible = false
@@ -61,6 +64,19 @@ class AdditionalInfoActivity : AppCompatActivity() {
             textView_email.isVisible = false
         }
         setPhoneSpinner()
+    }
+
+    private fun getMockPictures() {
+        imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture?.absolutePath))
+        when (lostUser.id) {
+            1 -> imageButton_profilePicture.setImageResource(R.drawable.lost1)
+            2 -> imageButton_profilePicture.setImageResource(R.drawable.lost2)
+            3 -> imageButton_profilePicture.setImageResource(R.drawable.lost3)
+            4 -> imageButton_profilePicture.setImageResource(R.drawable.lost4)
+            5 -> imageButton_profilePicture.setImageResource(R.drawable.lost5)
+            6 -> imageButton_profilePicture.setImageResource(R.drawable.lost6)
+            7 -> imageButton_profilePicture.setImageResource(R.drawable.lost7)
+        }
     }
 
     private fun onClickAllergies() {
@@ -86,7 +102,11 @@ class AdditionalInfoActivity : AppCompatActivity() {
 
     private fun setPhoneSpinner() {
         if (spinner_phoneList != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, lostUser.phoneList.split(" "))
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item,
+                lostUser.phoneList.split(" ")
+            )
             spinner_phoneList.adapter = adapter
             spinner_phoneList.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {

@@ -11,6 +11,7 @@ import com.easv.takemehomeapp.Model.BELostUser
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_login.*
+import java.io.File
 
 //private var privUsersDB: PrivilegedUsers = PrivilegedUsers()
 
@@ -43,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
         val listOfDiseases = "diabetes hypertension"
 
         usersDB.emptyDb()
-        usersDB.insertLostUser(BELostUser(1, "Veronica", "Tapp", listOfPhones, "verotapp@easv", "Copenhague, Denmark", 1309501234, listOfMedication, listOfAllergies, listOfDiseases, null))
+        usersDB.insertLostUser(BELostUser(1, "Veronica", "Tapp", listOfPhones, "verotapp@easv", "Copenhague, Denmark", 1309501234, listOfMedication, listOfAllergies, listOfDiseases, File("")))
         usersDB.insertLostUser(BELostUser(2, "Ava", "Brown", listOfPhones, "avabrow@easv", "Aarhus, Denmark", 2101509546, listOfMedication, listOfAllergies, listOfDiseases, null))
         usersDB.insertLostUser(BELostUser(3, "Bob", "Smith", listOfPhones, "bobsmit@easv", "Esbjerg, Denmark", 1610493216, listOfMedication, listOfAllergies, listOfDiseases, null))
         usersDB.insertLostUser(BELostUser(4, "John", "Davis", listOfPhones, "johndavi@easv", "Aalborg, Denmark", 228565498, listOfMedication, listOfAllergies, listOfDiseases, null))

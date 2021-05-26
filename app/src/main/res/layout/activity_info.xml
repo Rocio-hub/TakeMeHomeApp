@@ -43,15 +43,13 @@
 
                 <ImageButton
                     android:id="@+id/ib_profilePicture"
-                    android:layout_width="150dp"
-                    android:layout_height="200dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="5dp"
                     android:adjustViewBounds="true"
                     android:padding="3dp"
-                    android:scaleType="centerInside"
-                    android:background="@drawable/grad_login"
-                    android:src="@drawable/mockpicture" />
+                    android:scaleType="centerInside" />
 
             </RelativeLayout>
 

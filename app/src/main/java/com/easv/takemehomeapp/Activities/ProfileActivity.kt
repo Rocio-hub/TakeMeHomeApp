@@ -2,6 +2,7 @@ package com.easv.takemehomeapp.Activities
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.R
@@ -23,7 +24,12 @@ class ProfileActivity : AppCompatActivity() {
         textView_identityNo.setText("${loggedUser.username}")
         textView_fullName.setText("${loggedUser.firstName} ${loggedUser.lastName}")
         textView_cpr.setText(Integer.toString(loggedUser.CPR))
-        textView_station.setText(loggedUser.station)
+        if(loggedUser.role != "police"){
+            textView_station.setVisibility(View.GONE)
+            label_station.setVisibility(View.GONE)
+            line_station.setVisibility(View.GONE)
+        }
+        else textView_station.setText(loggedUser.station)
         imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(loggedUser.picture?.absolutePath))
     }
 }

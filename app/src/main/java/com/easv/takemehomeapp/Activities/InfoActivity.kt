@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.activity_info.*
 import java.io.File
 
 
+@Suppress("DEPRECATION")
 class InfoActivity : AppCompatActivity() {
 
     private val REQUEST_CODE = 101
@@ -48,6 +49,7 @@ class InfoActivity : AppCompatActivity() {
         startListening()
         getLocation()
 
+
         ib_profilePicture.setOnClickListener { v -> onClickProfilePicture() }
         textView_phone.setOnClickListener { v -> onClickPhone() }
         imageButton_sms.setOnClickListener { v -> onClickSms() }
@@ -59,15 +61,13 @@ class InfoActivity : AppCompatActivity() {
 
         lostUser = extras.getSerializable("lostUser") as BELostUser
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
-        Toast.makeText(this, "User name is: ${loggedUser.username}", Toast.LENGTH_SHORT).show()
-        Toast.makeText(this, "User role is: ${loggedUser.role}", Toast.LENGTH_SHORT).show()
-        Toast.makeText(this, "LostUser ID is: ${lostUser.id}", Toast.LENGTH_SHORT).show()
+
+
+        getUserInfo()
 
         if (loggedUser.role != "police" && loggedUser.role != "doctor") button_additInfo.setVisibility(
             View.GONE
         )
-
-        getUserInfo()
     }
 
     override fun onBackPressed() {
@@ -94,15 +94,25 @@ class InfoActivity : AppCompatActivity() {
         return true
     }
 
+    private fun getMockPictures() {
+        ib_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture?.absolutePath))
+        when (lostUser.id) {
+            1 -> ib_profilePicture.setImageResource(R.drawable.lost1)
+            2 -> ib_profilePicture.setImageResource(R.drawable.lost2)
+            3 -> ib_profilePicture.setImageResource(R.drawable.lost3)
+            4 -> ib_profilePicture.setImageResource(R.drawable.lost4)
+            5 -> ib_profilePicture.setImageResource(R.drawable.lost5)
+            6 -> ib_profilePicture.setImageResource(R.drawable.lost6)
+            7 -> ib_profilePicture.setImageResource(R.drawable.lost7)
+        }
+    }
+
     private fun getUserInfo() {
         if (lostUser != null) {
             textView_fullName.text = "${lostUser.firstName} ${lostUser.lastName}"
             textView_phone.text = "${lostUser.phoneList.split(" ")[0]}"
-            if (lostUser.picture != null) {
-                ib_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture?.absolutePath))
-            } else {
-                ib_profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.addcameraicon))
-            }
+            getMockPictures()
+
             Linkify.addLinks(textView_phone, Linkify.ALL);
         } else {
             Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
@@ -224,14 +234,14 @@ class InfoActivity : AppCompatActivity() {
     ) { //Method that will check that the CameraActivity will return a picture and assign it to our friend as well as display it in our DetailsActivity
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-                var newPicture = data?.extras?.getSerializable("newPicture") as File
-                if (newPicture != null) {
-                    ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
-                    lostUser.picture = newPicture
-                    lostUserDB.updateLostUser(lostUser)
-                }
+            var newPicture = data?.extras?.getSerializable("newPicture") as File
+            if (newPicture != null) {
+                ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
+                lostUser.picture = newPicture
+                lostUserDB.updateLostUser(lostUser)
             }
         }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
