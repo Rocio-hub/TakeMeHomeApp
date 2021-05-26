@@ -32,17 +32,10 @@ class LoginActivity : AppCompatActivity() {
         textView_error.setVisibility(View.INVISIBLE)
 
         button_submit.setOnClickListener { v -> onClickSubmit() }
-        textView_createAccount.setOnClickListener { v -> onClickCreateAccount() }
-
-        //var extras: Bundle = intent.extras!!
-        //lostUserId = extras.getInt("lostUserId")
+        textView_signUp.setOnClickListener { v -> onClickSignUp() }
     }
 
     private fun insertTestData() {
-        //var listPhones = listOf(1,2,3)
-        //var listCurrentMedication = listOf("medication", "b", "c")
-        //var listAllergies = listOf("allergies", "b", "c")
-        //var listDiseases = listOf("diseases", "b", "c")
         usersDB.emptyDb()
         usersDB.insertLostUser(BELostUser(1, "Peter", "Parker", "1 2 3", "email", "address", 123, "m e d i c a t i o n", "a l l e r g i e s", "d i s e a s e s", "picture"))
         usersDB.insertLostUser(BELostUser(2, "Scarlet", "Witch", "4 5 6", "email", "address", 456, "m e d i c a t i o n", "a l l e r g i e s", "d i s e a s e s", "picture"))
@@ -52,8 +45,8 @@ class LoginActivity : AppCompatActivity() {
         usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "nor1", "p", "FIRSTNAME3", "LASTNAME3", 789, "normal", "station", "PICTURE"))
     }
 
-    private fun onClickCreateAccount() {
-        val intent = Intent(this, CreateLostUserAccountActivity::class.java)
+    private fun onClickSignUp() {
+        val intent = Intent(this, SignUpNormalUserActivity::class.java)
         startActivity(intent)
     }
 
