@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grad_login"
+    tools:context=".Activities.AboutUsActivity">
+
+    <RelativeLayout
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="30dp"
+                android:background="#00000000"
+                android:src="@drawable/tmhlogo"
+                android:layout_centerHorizontal="true"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:text="Our mission is to give people the power to help the ones in need by bringing them this help within hand reach."
+            android:textAlignment="viewStart"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_below="@id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:text="For now we are only on the region of Denmark but, with everyone's support and will to help, we aim to be worldwide used."
+            android:textAlignment="viewStart"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_below="@id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:text="We have developed this application in order to build a united society, and together we can colaborate to protect the ones in need. Join us by signing up and you will be part of this great change."
+            android:textAlignment="viewStart"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

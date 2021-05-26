@@ -15,7 +15,7 @@ import java.io.File
 
 class SignUpNormalUserActivity : AppCompatActivity() {
 
-    private var newUser = BEPrivilegedUser(0, "", "", "", "",  0, "", "", 0)
+    private var newUser = BEPrivilegedUser(0, "", "", "", "", 0, "", "", 0)
     private lateinit var normalUserDB: IUserDAO
     private val REQUEST_CODE = 101
 
@@ -35,11 +35,11 @@ class SignUpNormalUserActivity : AppCompatActivity() {
 
     private fun onClickSubmit() {
         if (validateInput()) {
-            newUser.username  = editText_username.text.toString()
-            newUser.password  = editText_password.text.toString()
-            newUser.firstName  = editText_firstName.text.toString()
-            newUser.lastName  = editText_lastName.text.toString()
-            newUser.CPR  = editText_cpr.text.toString().toInt()
+            newUser.username = editText_username.text.toString()
+            newUser.password = editText_password.text.toString()
+            newUser.firstName = editText_firstName.text.toString()
+            newUser.lastName = editText_lastName.text.toString()
+            newUser.CPR = editText_cpr.text.toString().toInt()
         }
 
         normalUserDB.createPrivilegedUser(newUser)
@@ -59,9 +59,9 @@ class SignUpNormalUserActivity : AppCompatActivity() {
     }
 
     private fun showMissingInfo() {
-       /* if (editText_fullName.text.isNullOrBlank()) {
-            editText_fullName.error = "Please enter a name"
-        } else editText_fullName.error = null */
+        /* if (editText_fullName.text.isNullOrBlank()) {
+             editText_fullName.error = "Please enter a name"
+         } else editText_fullName.error = null */
     }
 
     private fun onClickPicture() {
@@ -69,13 +69,17 @@ class SignUpNormalUserActivity : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_CODE)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) { //Method that will check that the CameraActivity will return a picture and assign it to the lost user as well as display it on the activity
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) { //Method that will check that the CameraActivity will return a picture and assign it to the lost user as well as display it on the activity
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             var newPicture = data?.extras?.getSerializable("newPicture") as File
-            if(newPicture != null) {
-                ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture.toString()))
-                newUser.picture = newPicture as Int
+            if (newPicture != null) {
+                ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
+                newUser.picture = newPicture.toString().toInt()
             }
         }
     }

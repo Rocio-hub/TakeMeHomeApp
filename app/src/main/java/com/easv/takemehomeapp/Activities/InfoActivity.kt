@@ -216,17 +216,15 @@ class InfoActivity : AppCompatActivity() {
         data: Intent?
     ) { //Method that will check that the CameraActivity will return a picture and assign it to our friend as well as display it in our DetailsActivity
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
                 var newPicture = data?.extras?.getSerializable("newPicture") as File
                 if (newPicture != null) {
                     ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
-                    lostUser.picture = newPicture as Int
+                    lostUser.picture = newPicture.toString().toInt()
                     lostUserDB.updateLostUser(lostUser)
                 }
             }
         }
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
@@ -256,8 +254,8 @@ class InfoActivity : AppCompatActivity() {
             }
             R.id.action_about -> {
                 Toast.makeText(this, "Action About selected", Toast.LENGTH_SHORT).show()
-                //val intent = Intent(this, AboutUsActivity::class.java)
-                //startActivity(intent)
+                val intent = Intent(this, AboutUsActivity::class.java)
+                startActivity(intent)
                 true
             }
         }

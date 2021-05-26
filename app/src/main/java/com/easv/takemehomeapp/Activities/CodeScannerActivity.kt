@@ -159,8 +159,8 @@ class CodeScannerActivity : AppCompatActivity() {
             }
             R.id.action_about -> {
                 Toast.makeText(this, "Action About selected", Toast.LENGTH_SHORT).show()
-                //val intent = Intent(this, AboutUsActivity::class.java)
-                //startActivity(intent)
+                val intent = Intent(this, AboutUsActivity::class.java)
+                startActivity(intent)
                 true
             }
         }

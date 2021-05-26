@@ -84,7 +84,7 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
             var newPicture = data?.extras?.getSerializable("newPicture") as File
             if(newPicture != null) {
                 ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture.toString()))
-                newUser.picture = newPicture as Int
+                newUser.picture = newPicture.toString().toInt()
             }
         }
     }
