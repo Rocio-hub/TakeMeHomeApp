@@ -21,7 +21,7 @@
             android:layout_marginTop="20dp">
 
             <ImageView
-                android:id="@+id/imageView_profilePicture"
+                android:id="@+id/imageButton_profilePicture"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
@@ -102,7 +102,7 @@
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/textView_title1"
+                    android:id="@+id/label_cpr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CPR"
@@ -110,7 +110,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/textView_field1"
+                    android:id="@+id/textView_cpr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -145,7 +145,7 @@
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/textView_title2"
+                    android:id="@+id/label_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Address"
@@ -153,7 +153,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/textView_cpr"
+                    android:id="@+id/textView_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -185,7 +185,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:orientation="vertical" android:layout_gravity="">
+                android:orientation="vertical"
+                android:layout_gravity="">
+
+                <TextView
+                    android:id="@+id/label_phoneList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="List of phones"
+                    android:textColor="@color/gradEnd"
+                    android:textSize="13sp" />
 
                 <Spinner
                     android:id="@+id/spinner_phoneList"
@@ -219,15 +228,15 @@
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/textView_title4"
+                    android:id="@+id/label_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SOMETHINGELSE"
+                    android:text="E-mail"
                     android:textColor="@color/gradEnd"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/textView_field4"
+                    android:id="@+id/textView_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"

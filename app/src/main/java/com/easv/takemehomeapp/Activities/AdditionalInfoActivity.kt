@@ -37,13 +37,9 @@ class AdditionalInfoActivity : AppCompatActivity() {
         textView_username.setText("${lostUser.firstName} ${lostUser.lastName}")
 
         if (loggedUser.role.equals("police")) {
-            label.setText("PERSONAL INFORMATION")
-            textView_title1.setText("CPR")
-            textView_field1.setText((lostUser.CPR).toString())
-            textView_title2.setText("Address")
-            textView_cpr.setText(lostUser.address)
-            textView_title4.setText("SOMETHING ELSE HERE")
-            textView_field4.setText(lostUser.email)
+            textView_cpr.setText((lostUser.CPR).toString())
+            textView_address.setText(lostUser.address)
+            textView_email.setText(lostUser.email)
             button_allergies.isVisible = false
             button_diseases.isVisible = false
             button_medication.isVisible = false
@@ -55,13 +51,14 @@ class AdditionalInfoActivity : AppCompatActivity() {
             line2.isVisible = false
             line3.isVisible = false
             line4.isVisible = false
-            textView_title1.isVisible = false
-            textView_field1.isVisible = false
-            textView_title2.isVisible = false
+            label_cpr.isVisible = false
+            label_address.isVisible = false
+            label_phoneList.isVisible = false
+            label_email.isVisible = false
             textView_cpr.isVisible = false
+            textView_address.isVisible = false
             spinner_phoneList.isVisible = false
-            textView_title4.isVisible = false
-            textView_field4.isVisible = false
+            textView_email.isVisible = false
         }
 
         phoneList = lostUser.phoneList.split(" ")

@@ -88,6 +88,7 @@ class InfoActivity : AppCompatActivity() {
         if (lostUser != null) {
             textView_username.text = "${lostUser.firstName} ${lostUser.lastName}"
             textView_phone.text = "${lostUser.phoneList[0]}"
+            imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture))
             Linkify.addLinks(textView_phone, Linkify.ALL);
         } else {
             Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
@@ -177,6 +178,19 @@ class InfoActivity : AppCompatActivity() {
                 }
 
                 override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+                    println("DEBUG 2");
+                    Toast.makeText(this@InfoActivity,"onStatusChanged",Toast.LENGTH_LONG).show();
+                }
+
+                override fun onProviderEnabled(provider: String) {
+                    println("DEBUG 3")
+                    Toast.makeText(this@InfoActivity, "onProviderEnabled", Toast.LENGTH_LONG).show()
+                }
+
+                override fun onProviderDisabled(provider: String) {
+                    println("DEBUG 4")
+                    Toast.makeText(this@InfoActivity, "onProviderDisabled", Toast.LENGTH_LONG)
+                        .show()
                 }
             }
 
@@ -200,7 +214,7 @@ class InfoActivity : AppCompatActivity() {
                 var newPicture = data?.extras?.getSerializable("newPicture") as File
                 if (newPicture != null) {
                     imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
-                    //lostUser.image = newPicture
+                    lostUser.picture = newPicture.absolutePath
                 }
             }
         }
