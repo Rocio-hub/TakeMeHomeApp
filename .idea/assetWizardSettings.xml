@@ -86,6 +86,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
+                                                <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="C:\Users\rtlop\AppData\Local\Temp\ic_android_black_24dp.xml" />
                                               </map>
                                             </option>
@@ -98,7 +99,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\rtlop\Desktop\mockpicture.jpg" />
+                                                <entry key="imagePath" value="C:\Users\rtlop\Desktop\tmhlogo.png" />
                                                 <entry key="scalingPercent" value="72" />
                                               </map>
                                             </option>
@@ -295,11 +296,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>
