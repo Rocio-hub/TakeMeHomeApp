@@ -29,7 +29,7 @@
                 android:background="@drawable/grad_login"
                 android:padding="3dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/mockpicture" />
+                android:src="@drawable/addcameraicon" />
 
         </RelativeLayout>
 

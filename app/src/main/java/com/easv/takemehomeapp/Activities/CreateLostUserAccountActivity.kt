@@ -15,7 +15,7 @@ import java.io.File
 
 class CreateLostUserAccountActivity : AppCompatActivity() {
 
-    private var newUser = BELostUser(0, "", "", "", "", "", 0, "", "", "", "")
+    private var newUser = BELostUser(0, "", "", "", "", "", 0, "", "", "", null)
     private lateinit var lostUserDB: IUserDAO
     private val REQUEST_CODE = 101
 
@@ -24,7 +24,7 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_lostuser_account)
 
         lostUserDB = UserDAO_Impl(this)
-        newUser.picture = "PICTURE STRING"
+        newUser.picture = null
 
         ib_profilePicture.setImageResource(R.drawable.addcameraicon)
 
@@ -79,7 +79,7 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
             var newPicture = data?.extras?.getSerializable("newPicture") as File
             if(newPicture != null) {
                 ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture.toString()))
-                newUser.picture = newPicture.toString()
+                newUser.picture = newPicture
             }
         }
     }

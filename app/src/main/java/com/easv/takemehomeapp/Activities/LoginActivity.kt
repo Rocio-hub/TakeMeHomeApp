@@ -37,9 +37,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun insertTestData() {
         usersDB.emptyDb()
-        usersDB.insertLostUser(BELostUser(1, "Peter", "Parker", "1 2 3", "email", "address", 123, "m e d i c a t i o n", "a l l e r g i e s", "d i s e a s e s", "picture"))
-        usersDB.insertLostUser(BELostUser(2, "Scarlet", "Witch", "4 5 6", "email", "address", 456, "m e d i c a t i o n", "a l l e r g i e s", "d i s e a s e s", "picture"))
-        usersDB.insertLostUser(BELostUser(3, "Captain", "America", "7 8 9", "email", "address", 789, "m e d i c a t i o n", "a l l e r g i e s", "d i s e a s e s", "picture"))
+        usersDB.insertLostUser(BELostUser(1, "Peter", "Parker", "1 2 3", "email", "address", 123, "m e d i c a t i o n", "a l l e r g i e s", "d i s e a s e s", null))
+        usersDB.insertLostUser(BELostUser(2, "Scarlet", "Witch", "4 5 6", "email", "address", 456, "m e d i c a t i o n", "a l l e r g i e s", "d i s e a s e s", null))
+        usersDB.insertLostUser(BELostUser(3, "Captain", "America", "7 8 9", "email", "address", 789, "m e d i c a t i o n", "a l l e r g i e s", "d i s e a s e s", null))
         usersDB.insertPrivilegedUser(BEPrivilegedUser(1, "pol1", "p", "FIRSTNAME1", "LASTNAME1", 123, "police", "station", "PICTURE"))
         usersDB.insertPrivilegedUser(BEPrivilegedUser(2, "doc1", "p", "FIRSTNAME2", "LASTNAME2", 456, "doctor", "station", "PICTURE"))
         usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "nor1", "p", "FIRSTNAME3", "LASTNAME3", 789, "normal", "station", "PICTURE"))

@@ -18,6 +18,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.easv.takemehomeapp.Data.UserDAO_Impl
 import com.easv.takemehomeapp.Model.BELostUser
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.Model.LostUsers
@@ -31,11 +32,13 @@ class InfoActivity : AppCompatActivity() {
     private val REQUEST_CODE = 101
 
     private var lostUsersDB: LostUsers = LostUsers()
+    private var lostUserDB = UserDAO_Impl(this)
     private lateinit var loggedUser: BEPrivilegedUser
     private lateinit var lostUser: BELostUser
     private var currentLocationLat: Double = 0.0
     private var currentLocationLon: Double = 0.0
     private var myLocationListener: LocationListener? = null //Initialize the Location Listener
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +48,7 @@ class InfoActivity : AppCompatActivity() {
         startListening()
         getLocation()
 
-        imageButton_profilePicture.setOnClickListener { v -> onClickProfilePicture() }
+        ib_profilePicture.setOnClickListener { v -> onClickProfilePicture() }
         textView_phone.setOnClickListener { v -> onClickPhone() }
         imageButton_sms.setOnClickListener { v -> onClickSms() }
         imageButton_email.setOnClickListener { v -> onClickEmail() }
@@ -86,9 +89,13 @@ class InfoActivity : AppCompatActivity() {
 
     private fun getUserInfo() {
         if (lostUser != null) {
-            textView_username.text = "${lostUser.firstName} ${lostUser.lastName}"
+            textView_fullName.text = "${lostUser.firstName} ${lostUser.lastName}"
             textView_phone.text = "${lostUser.phoneList[0]}"
-            imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture))
+            if (lostUser.picture != null) {
+                ib_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture!!.toString()))
+            } else {
+                ib_profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.addcameraicon))
+            }
             Linkify.addLinks(textView_phone, Linkify.ALL);
         } else {
             Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
@@ -179,7 +186,7 @@ class InfoActivity : AppCompatActivity() {
 
                 override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
                     println("DEBUG 2");
-                    Toast.makeText(this@InfoActivity,"onStatusChanged",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this@InfoActivity, "onStatusChanged", Toast.LENGTH_LONG).show();
                 }
 
                 override fun onProviderEnabled(provider: String) {
@@ -213,8 +220,9 @@ class InfoActivity : AppCompatActivity() {
             if (resultCode == RESULT_OK) {
                 var newPicture = data?.extras?.getSerializable("newPicture") as File
                 if (newPicture != null) {
-                    imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
-                    lostUser.picture = newPicture.absolutePath
+                    ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
+                    lostUser.picture = newPicture
+                    lostUserDB.updateLostUser(lostUser)
                 }
             }
         }
@@ -224,14 +232,14 @@ class InfoActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main_menu, menu)
 
         var item: MenuItem = menu!!.findItem(R.id.action_newUser)
-        if(loggedUser.role=="doctor" || loggedUser.role=="normal") item.setVisible(false)
+        if (loggedUser.role == "doctor" || loggedUser.role == "normal") item.setVisible(false)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id: Int = item.getItemId()
 
-        when(id) {
+        when (id) {
             R.id.action_newUser -> {
                 Toast.makeText(this, "Action NewUser selected", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, CreateLostUserAccountActivity::class.java)
