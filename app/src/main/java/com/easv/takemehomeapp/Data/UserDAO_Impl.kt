@@ -7,9 +7,10 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.easv.takemehomeapp.Model.BELostUser
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
+import java.io.File
 
 class UserDAO_Impl(context: Context) :
-    SQLiteOpenHelper(context, "TakeMeHomeDB", null, 14), IUserDAO {
+    SQLiteOpenHelper(context, "TakeMeHomeDB", null, 15), IUserDAO {
 
 
     //Methods for both
@@ -42,7 +43,7 @@ class UserDAO_Impl(context: Context) :
         cv.put("CPR", p.CPR)
         cv.put("role", p.role)
         cv.put("station", p.station)
-        cv.put("picture", p.picture)
+        cv.put("picture", p.picture.toString())
         db.insert("PrivilegedUser", null, cv)
     }
 
@@ -56,7 +57,7 @@ class UserDAO_Impl(context: Context) :
         cv.put("CPR", p.CPR)
         cv.put("role", p.role)
         cv.put("station", p.station)
-        cv.put("picture", p.picture)
+        cv.put("picture", p.picture.toString())
         db.insert("PrivilegedUser", null, cv)
     }
 
@@ -91,8 +92,8 @@ class UserDAO_Impl(context: Context) :
                 val CPR = cursor.getInt(cursor.getColumnIndex("CPR"))
                 val role = cursor.getString(cursor.getColumnIndex("role"))
                 val station = cursor.getString(cursor.getColumnIndex("station"))
-                val picture = cursor.getInt(cursor.getColumnIndex("picture"))
-                myList.add(BEPrivilegedUser(id, username, password, firstName, lastName, CPR, role, station, picture))
+                val picture = cursor.getString(cursor.getColumnIndex("picture"))
+                myList.add(BEPrivilegedUser(id, username, password, firstName, lastName, CPR, role, station, File(picture)))
             } while (cursor.moveToNext())
         }
         return myList
@@ -104,13 +105,13 @@ class UserDAO_Impl(context: Context) :
         val cv = ContentValues()
         cv.put("firstName", l.firstName)
         cv.put("lastName", l.lastName)
-        cv.put("phoneList", l.phoneList.toString())
+        cv.put("phoneList", l.phoneList)
         cv.put("email", l.email)
         cv.put("address", l.address)
         cv.put("CPR", l.CPR)
-        cv.put("medicationList", l.medicationList.toString())
-        cv.put("allergiesList", l.allergiesList.toString())
-        cv.put("diseasesList", l.diseasesList.toString())
+        cv.put("medicationList", l.medicationList)
+        cv.put("allergiesList", l.allergiesList)
+        cv.put("diseasesList", l.diseasesList)
         cv.put("picture", l.picture.toString())
         db.insert("LostUser", null, cv)
     }
@@ -120,13 +121,13 @@ class UserDAO_Impl(context: Context) :
         val cv = ContentValues()
         cv.put("firstName", l.firstName)
         cv.put("lastName", l.lastName)
-        cv.put("phoneList", l.phoneList.toString())
+        cv.put("phoneList", l.phoneList)
         cv.put("email", l.email)
         cv.put("address", l.address)
         cv.put("CPR", l.CPR)
-        cv.put("medicationList", l.medicationList.toString())
-        cv.put("allergiesList", l.allergiesList.toString())
-        cv.put("diseasesList", l.diseasesList.toString())
+        cv.put("medicationList", l.medicationList)
+        cv.put("allergiesList", l.allergiesList)
+        cv.put("diseasesList", l.diseasesList)
         cv.put("picture", l.picture.toString())
         db.insert("LostUser", null, cv)
     }
@@ -135,7 +136,7 @@ class UserDAO_Impl(context: Context) :
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put("firstName", l.firstName)
-        cv.put("lastName", "l.lastName")
+        cv.put("lastName", l.lastName)
         cv.put("phoneList", l.phoneList.toString())
         cv.put("email", l.email)
         cv.put("address", l.address)
@@ -164,7 +165,7 @@ class UserDAO_Impl(context: Context) :
         if (myList.isNotEmpty()) {
             return myList[0]
         } else {
-            return BELostUser(0, "", "", "", "", "", 0, "", "", "", 0)
+            return BELostUser(0, "", "", "", "", "", 0, "", "", "", null)
         }
     }
 
@@ -183,9 +184,9 @@ class UserDAO_Impl(context: Context) :
                 val medicationList = cursor.getString(cursor.getColumnIndex("medicationList"))
                 val allergiesList = cursor.getString(cursor.getColumnIndex("allergiesList"))
                 val diseasesList = cursor.getString(cursor.getColumnIndex("diseasesList"))
-                val picture = cursor.getInt(cursor.getColumnIndex("picture"))
+                val picture = cursor.getString(cursor.getColumnIndex("picture"))
 
-                myList.add(BELostUser(id, firstName, lastName, phoneList, email, address, CPR, medicationList, allergiesList, diseasesList, picture))
+                myList.add(BELostUser(id, firstName, lastName, phoneList, email, address, CPR, medicationList, allergiesList, diseasesList, File(picture)))
             } while (cursor.moveToNext())
         }
         return myList

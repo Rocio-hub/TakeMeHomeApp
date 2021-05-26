@@ -1,5 +1,6 @@
 package com.easv.takemehomeapp.Model
 
+import java.io.File
 import java.io.Serializable
 
 class BELostUser(
@@ -13,5 +14,5 @@ class BELostUser(
     var medicationList: String,
     var allergiesList: String,
     var diseasesList: String,
-    var picture: Int
+    var picture: File?
 ): Serializable

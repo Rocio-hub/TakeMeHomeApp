@@ -22,10 +22,7 @@ private var loggedUser: BEPrivilegedUser? = null
 
 class LoginActivity : AppCompatActivity() {
 
-    private val lostUserPicId = intArrayOf(0, R.drawable.lost1, R.drawable.lost2, R.drawable.lost3, R.drawable.lost4, R.drawable.lost5, R.drawable.lost6, R.drawable.lost7)
-    private val PrivUserPicId = intArrayOf(0, R.drawable.normal1, R.drawable.normal2, R.drawable.police1, R.drawable.police2, R.drawable.doctor1, R.drawable.doctor2)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+   override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
@@ -46,19 +43,19 @@ class LoginActivity : AppCompatActivity() {
         val listOfDiseases = "diabetes hypertension"
 
         usersDB.emptyDb()
-        usersDB.insertLostUser(BELostUser(1, "Veronica", "Tapp", listOfPhones, "verotapp@easv", "Copenhague, Denmark", 1309501234, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost1))
-        usersDB.insertLostUser(BELostUser(2, "Ava", "Brown", listOfPhones, "avabrow@easv", "Aarhus, Denmark", 2101509546, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost2))
-        usersDB.insertLostUser(BELostUser(3, "Bob", "Smith", listOfPhones, "bobsmit@easv", "Esbjerg, Denmark", 1610493216, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost3))
-        usersDB.insertLostUser(BELostUser(4, "John", "Davis", listOfPhones, "johndavi@easv", "Aalborg, Denmark", 228565498, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost4))
-        usersDB.insertLostUser(BELostUser(5, "Silvana", "Verner", listOfPhones, "silvvern@easv", "Vejle, Denmark", 2508453216, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost5))
-        usersDB.insertLostUser(BELostUser(6, "Thomas", "Jones", listOfPhones, "thomjone@easv", "Kolding, Denmark", 1306403165, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost6))
-        usersDB.insertLostUser(BELostUser(7, "Michael", "Garcia", listOfPhones, "michgarc@easv", "Randers, Denmark", 2903476589, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost7))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(1, "kate1982", "abcd", "Kate", "Underwood", 1205823568, "normal", "", R.drawable.normal1))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(2, "justin1973", "abcd", "Justin", "Dawson", 1709732955, "normal", "", R.drawable.normal2))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "elizabeth1981", "abcd", "Elizabeth", "Elliott", 25031981, "doctor", "", R.drawable.doctor1))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(4, "dylan1986", "abcd", "Dylan", "Wells", 11111986, "doctor", "", R.drawable.doctor2))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(5, "AB1234", "abcd", "Scarlett", "Kent", 1408663654, "police", "Kolding station", R.drawable.police1))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(6, "CD9876", "abcd", "Luca", "Taylor", 28121965, "police", "Esbjerg station", R.drawable.police2))
+        usersDB.insertLostUser(BELostUser(1, "Veronica", "Tapp", listOfPhones, "verotapp@easv", "Copenhague, Denmark", 1309501234, listOfMedication, listOfAllergies, listOfDiseases, null))
+        usersDB.insertLostUser(BELostUser(2, "Ava", "Brown", listOfPhones, "avabrow@easv", "Aarhus, Denmark", 2101509546, listOfMedication, listOfAllergies, listOfDiseases, null))
+        usersDB.insertLostUser(BELostUser(3, "Bob", "Smith", listOfPhones, "bobsmit@easv", "Esbjerg, Denmark", 1610493216, listOfMedication, listOfAllergies, listOfDiseases, null))
+        usersDB.insertLostUser(BELostUser(4, "John", "Davis", listOfPhones, "johndavi@easv", "Aalborg, Denmark", 228565498, listOfMedication, listOfAllergies, listOfDiseases, null))
+        usersDB.insertLostUser(BELostUser(5, "Silvana", "Verner", listOfPhones, "silvvern@easv", "Vejle, Denmark", 2508453216, listOfMedication, listOfAllergies, listOfDiseases, null))
+        usersDB.insertLostUser(BELostUser(6, "Thomas", "Jones", listOfPhones, "thomjone@easv", "Kolding, Denmark", 1306403165, listOfMedication, listOfAllergies, listOfDiseases, null))
+        usersDB.insertLostUser(BELostUser(7, "Michael", "Garcia", listOfPhones, "michgarc@easv", "Randers, Denmark", 2903476589, listOfMedication, listOfAllergies, listOfDiseases, null))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(1, "kate1982", "abcd", "Kate", "Underwood", 1205823568, "normal", "", null))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(2, "justin1973", "abcd", "Justin", "Dawson", 1709732955, "normal", "", null))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "elizabeth1981", "abcd", "Elizabeth", "Elliott", 25031981, "doctor", "", null))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(4, "dylan1986", "abcd", "Dylan", "Wells", 11111986, "doctor", "", null))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(5, "AB1234", "abcd", "Scarlett", "Kent", 1408663654, "police", "Kolding station", null))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(6, "CD9876", "abcd", "Luca", "Taylor", 28121965, "police", "Esbjerg station",null))
     }
 
     private fun onClickSignUp() {

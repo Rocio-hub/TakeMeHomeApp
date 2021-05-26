@@ -70,6 +70,13 @@ class InfoActivity : AppCompatActivity() {
         getUserInfo()
     }
 
+    override fun onBackPressed() {
+        var intent = Intent(this, CodeScannerActivity::class.java)
+        intent.putExtra("loggedUser", loggedUser)
+        startActivity(intent)
+        finish()
+    }
+
     private val permissions = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
     )
@@ -92,7 +99,7 @@ class InfoActivity : AppCompatActivity() {
             textView_fullName.text = "${lostUser.firstName} ${lostUser.lastName}"
             textView_phone.text = "${lostUser.phoneList.split(" ")[0]}"
             if (lostUser.picture != null) {
-                ib_profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.lost1))
+                ib_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture?.absolutePath))
             } else {
                 ib_profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.addcameraicon))
             }
@@ -119,7 +126,7 @@ class InfoActivity : AppCompatActivity() {
         var mapsLink: String =
             "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse("sms: ${lostUser.phoneList[0]}")
+        intent.data = Uri.parse("sms: ${lostUser.phoneList.split(" ")[0]}}")
         intent.putExtra(
             "sms_body",
             "Hello, this is my location via sms: $mapsLink"
@@ -132,8 +139,8 @@ class InfoActivity : AppCompatActivity() {
             "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "plain/text"
-        val receivers = arrayOf(lostUser.email)
-        intent.putExtra(Intent.EXTRA_EMAIL, receivers)
+        val receiver = lostUser.email
+        intent.putExtra(Intent.EXTRA_EMAIL, receiver)
         intent.putExtra(
             Intent.EXTRA_TEXT,
             "Hello, this is my location via email: $mapsLink"
@@ -220,7 +227,7 @@ class InfoActivity : AppCompatActivity() {
                 var newPicture = data?.extras?.getSerializable("newPicture") as File
                 if (newPicture != null) {
                     ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
-                    lostUser.picture = newPicture.toString().toInt()
+                    lostUser.picture = newPicture
                     lostUserDB.updateLostUser(lostUser)
                 }
             }

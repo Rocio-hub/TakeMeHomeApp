@@ -50,6 +50,7 @@ class CodeScannerActivity : AppCompatActivity() {
         intent.putExtra("loggedUser", loggedUser)
         intent.putExtra("lostUser", lostUser)
         startActivity(intent)
+        finish()
     }
 
     private fun codeScanner() {

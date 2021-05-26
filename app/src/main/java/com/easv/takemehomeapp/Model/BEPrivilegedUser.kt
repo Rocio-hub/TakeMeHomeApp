@@ -1,5 +1,6 @@
 package com.easv.takemehomeapp.Model
 
+import java.io.File
 import java.io.Serializable
 
 class BEPrivilegedUser (
@@ -11,5 +12,5 @@ class BEPrivilegedUser (
     var CPR: Int,
     var role: String,
     var station: String,
-    var picture: Int,
+    var picture: File?
 ): Serializable

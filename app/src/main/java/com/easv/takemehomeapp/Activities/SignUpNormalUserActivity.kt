@@ -9,13 +9,12 @@ import com.easv.takemehomeapp.Data.UserDAO_Impl
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_create_lostuser_account.button_submit
-import kotlinx.android.synthetic.main.activity_create_lostuser_account.ib_profilePicture
 import kotlinx.android.synthetic.main.activity_sign_up_normal_user.*
 import java.io.File
 
 class SignUpNormalUserActivity : AppCompatActivity() {
 
-    private var newUser = BEPrivilegedUser(0, "", "", "", "", 0, "", "", 0)
+    private var newUser = BEPrivilegedUser(0, "", "", "", "", 0, "", "", null)
     private lateinit var normalUserDB: IUserDAO
     private val REQUEST_CODE = 101
 
@@ -25,11 +24,10 @@ class SignUpNormalUserActivity : AppCompatActivity() {
 
         normalUserDB = UserDAO_Impl(this)
         newUser.role = "normal"
-        newUser.picture = 0
+        newUser.picture = null
+        newUser.station = ""
 
-        ib_profilePicture.setImageResource(R.drawable.addcameraicon)
-
-        ib_profilePicture.setOnClickListener { v -> onClickPicture() }
+        imageButton_picture.setOnClickListener { v -> onClickPicture() }
         button_submit.setOnClickListener { v -> onClickSubmit() }
     }
 
@@ -43,7 +41,6 @@ class SignUpNormalUserActivity : AppCompatActivity() {
         }
 
         normalUserDB.createPrivilegedUser(newUser)
-
         val intent = Intent(this, CodeScannerActivity::class.java)
         intent.putExtra("loggedUser", newUser)
         startActivity(intent)
@@ -78,8 +75,8 @@ class SignUpNormalUserActivity : AppCompatActivity() {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             var newPicture = data?.extras?.getSerializable("newPicture") as File
             if (newPicture != null) {
-                ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
-                newUser.picture = newPicture.toString().toInt()
+                imageButton_picture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
+                newUser.picture = newPicture
             }
         }
     }

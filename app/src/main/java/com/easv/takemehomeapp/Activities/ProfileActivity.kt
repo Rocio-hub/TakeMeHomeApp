@@ -1,5 +1,6 @@
 package com.easv.takemehomeapp.Activities
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
@@ -23,6 +24,6 @@ class ProfileActivity : AppCompatActivity() {
         textView_fullName.setText("${loggedUser.firstName} ${loggedUser.lastName}")
         textView_cpr.setText(Integer.toString(loggedUser.CPR))
         textView_station.setText(loggedUser.station)
-        imageButton_profilePicture.setImageDrawable(getResources().getDrawable(loggedUser.picture))
+        imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(loggedUser.picture?.absolutePath))
     }
 }
