@@ -28,9 +28,9 @@ class ListsActivity : AppCompatActivity() {
         listName = extras.getString("listName")!!
 
         when (listName) {
-            "allergies" -> myList = lostUser.allergiesList.split(" ")
-            "diseases" -> myList = lostUser.diseasesList.split(" ")
-            "medication" -> myList = lostUser.medicationList.split(" ")
+            "allergies" -> myList = lostUser.allergiesList
+            "diseases" -> myList = lostUser.diseasesList
+            "medication" -> myList = lostUser.medicationList
         }
 
         listView_items.adapter = ListAdapter(

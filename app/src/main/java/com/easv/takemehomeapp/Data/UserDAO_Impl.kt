@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.easv.takemehomeapp.Model.BELostUser
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
-import java.io.File
 
 class UserDAO_Impl(context: Context) :
     SQLiteOpenHelper(context, "TakeMeHomeDB", null, 14), IUserDAO {
@@ -105,13 +104,13 @@ class UserDAO_Impl(context: Context) :
         val cv = ContentValues()
         cv.put("firstName", l.firstName)
         cv.put("lastName", l.lastName)
-        cv.put("phoneList", l.phoneList)
+        cv.put("phoneList", l.phoneList.toString())
         cv.put("email", l.email)
         cv.put("address", l.address)
         cv.put("CPR", l.CPR)
-        cv.put("medicationList", l.medicationList)
-        cv.put("allergiesList", l.allergiesList)
-        cv.put("diseasesList", l.diseasesList)
+        cv.put("medicationList", l.medicationList.toString())
+        cv.put("allergiesList", l.allergiesList.toString())
+        cv.put("diseasesList", l.diseasesList.toString())
         cv.put("picture", l.picture.toString())
         db.insert("LostUser", null, cv)
     }
@@ -121,13 +120,13 @@ class UserDAO_Impl(context: Context) :
         val cv = ContentValues()
         cv.put("firstName", l.firstName)
         cv.put("lastName", l.lastName)
-        cv.put("phoneList", l.phoneList)
+        cv.put("phoneList", l.phoneList.toString())
         cv.put("email", l.email)
         cv.put("address", l.address)
         cv.put("CPR", l.CPR)
-        cv.put("medicationList", l.medicationList)
-        cv.put("allergiesList", l.allergiesList)
-        cv.put("diseasesList", l.diseasesList)
+        cv.put("medicationList", l.medicationList.toString())
+        cv.put("allergiesList", l.allergiesList.toString())
+        cv.put("diseasesList", l.diseasesList.toString())
         cv.put("picture", l.picture.toString())
         db.insert("LostUser", null, cv)
     }
@@ -137,13 +136,13 @@ class UserDAO_Impl(context: Context) :
         val cv = ContentValues()
         cv.put("firstName", l.firstName)
         cv.put("lastName", "l.lastName")
-        cv.put("phoneList", l.phoneList)
+        cv.put("phoneList", l.phoneList.toString())
         cv.put("email", l.email)
         cv.put("address", l.address)
         cv.put("CPR", l.CPR)
-        cv.put("medicationList", l.medicationList)
-        cv.put("allergiesList", l.allergiesList)
-        cv.put("diseasesList", l.diseasesList)
+        cv.put("medicationList", l.medicationList.toString())
+        cv.put("allergiesList", l.allergiesList.toString())
+        cv.put("diseasesList", l.diseasesList.toString())
         cv.put("picture", l.picture.toString())
         val whereClause = "id=?"
         val whereArgs = arrayOf((l.id).toString())
@@ -165,26 +164,45 @@ class UserDAO_Impl(context: Context) :
         if (myList.isNotEmpty()) {
             return myList[0]
         } else {
-            return BELostUser(0, "", "", "", "", "", 0, "", "", "", null)
+            return BELostUser(0, "", "", mutableListOf(), "", "", 0, listOf(), listOf(), listOf(), 0)
         }
     }
 
     private fun getByCursorLostUser(cursor: Cursor): List<BELostUser> {
+        val myPhoneList : MutableList<String> = mutableListOf()
+        val myMedicationList : MutableList<String> = mutableListOf()
+        val myAllergiesList : MutableList<String> = mutableListOf()
+        val myDiseasesList : MutableList<String> = mutableListOf()
+
         val myList = ArrayList<BELostUser>()
         if (cursor.moveToFirst()) {
             do {
                 val id = cursor.getInt(cursor.getColumnIndex("id"))
                 val firstName = cursor.getString(cursor.getColumnIndex("firstName"))
                 val lastName = cursor.getString(cursor.getColumnIndex("lastName"))
-                val phoneList = cursor.getString(cursor.getColumnIndex("phoneList"))
+                val phoneList = cursor.getString(cursor.getColumnIndex("phoneList")).split(" ")
                 val email = cursor.getString(cursor.getColumnIndex("email"))
                 val address = cursor.getString(cursor.getColumnIndex("address"))
-                val CPR = cursor.getInt(cursor.getColumnIndex("CPR"))
-                val medicationList = cursor.getString(cursor.getColumnIndex("medicationList"))
-                val allergiesList = cursor.getString(cursor.getColumnIndex("allergiesList"))
-                val diseasesList = cursor.getString(cursor.getColumnIndex("diseasesList"))
-                val picture = cursor.getString(cursor.getColumnIndex("picture"))
-                myList.add(BELostUser(id, firstName, lastName, phoneList, email, address, CPR, medicationList, allergiesList, diseasesList, File(picture)))
+                val CPR = cursor.getLong(cursor.getColumnIndex("CPR"))
+                val medicationList = cursor.getString(cursor.getColumnIndex("medicationList")).split(" ")
+                val allergiesList = cursor.getString(cursor.getColumnIndex("allergiesList")).split(" ")
+                val diseasesList = cursor.getString(cursor.getColumnIndex("diseasesList")).split(" ")
+                val picture = cursor.getInt(cursor.getColumnIndex("picture"))
+
+                for(item in phoneList){
+                    myPhoneList.add(item)
+                }
+                for(item in medicationList){
+                    myMedicationList.add(item)
+                }
+                for(item in allergiesList){
+                    myAllergiesList.add(item)
+                }
+                for(item in diseasesList){
+                    myDiseasesList.add(item)
+                }
+
+                myList.add(BELostUser(id, firstName, lastName, myPhoneList, email, address, CPR, myMedicationList, myAllergiesList, myDiseasesList, picture))
             } while (cursor.moveToNext())
         }
         return myList

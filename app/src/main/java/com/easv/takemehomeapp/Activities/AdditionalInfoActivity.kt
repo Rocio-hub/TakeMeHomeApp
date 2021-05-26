@@ -60,11 +60,6 @@ class AdditionalInfoActivity : AppCompatActivity() {
             spinner_phoneList.isVisible = false
             textView_email.isVisible = false
         }
-
-        phoneList = lostUser.phoneList.split(" ")
-        allergieList = lostUser.allergiesList.split(" ")
-        medicationList = lostUser.medicationList.split(" ")
-        diseaseList = lostUser.diseasesList.split(" ")
         setPhoneSpinner()
     }
 

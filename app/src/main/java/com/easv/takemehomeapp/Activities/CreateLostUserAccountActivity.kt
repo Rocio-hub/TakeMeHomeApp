@@ -15,7 +15,7 @@ import java.io.File
 
 class CreateLostUserAccountActivity : AppCompatActivity() {
 
-    private var newUser = BELostUser(0, "", "", "", "", "", 0, "", "", "", null)
+    private var newUser = BELostUser(0, "", "", mutableListOf(), "", "", 0, listOf(), listOf(), listOf(), 0)
     private lateinit var lostUserDB: IUserDAO
     private val REQUEST_CODE = 101
 
@@ -24,7 +24,7 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_lostuser_account)
 
         lostUserDB = UserDAO_Impl(this)
-        newUser.picture = null
+        newUser.picture = 0
 
         ib_profilePicture.setImageResource(R.drawable.addcameraicon)
 
@@ -35,15 +35,20 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
 
     private fun onClickSubmit() {
           if (validateInput()) {
+              var phoneList : List<String> = editText_phoneList.text.toString().split(" ")
+              var medicationList : List<String> = editText_medicationList.text.toString().split(" ")
+              var allergiesList : List<String> = editText_allergyList.text.toString().split(" ")
+              var diseasesList : List<String> = editText_diseaseList.text.toString().split(" ")
+
               newUser.firstName  = editText_fullName.text.toString().split(" ")[0]
               newUser.lastName  = editText_fullName.text.toString().split(" ")[1]
-              newUser.phoneList = editText_phoneList.text.toString()
+              newUser.phoneList = phoneList
               newUser.email = editText_email.text.toString()
               newUser.address = editText_address.text.toString()
-              newUser.CPR = editText_cpr.text.toString().toInt()
-              newUser.medicationList = editText_medicationList.text.toString()
-              newUser.allergiesList = editText_allergyList.text.toString()
-              newUser.diseasesList = editText_diseaseList.text.toString()
+              newUser.CPR = editText_cpr.text.toString().toLong()
+              newUser.medicationList = medicationList
+              newUser.allergiesList = allergiesList
+              newUser.diseasesList = diseasesList
           }
 
           lostUserDB.createLostUser(newUser)
@@ -79,7 +84,7 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
             var newPicture = data?.extras?.getSerializable("newPicture") as File
             if(newPicture != null) {
                 ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture.toString()))
-                newUser.picture = newPicture
+                newUser.picture = newPicture as Int
             }
         }
     }

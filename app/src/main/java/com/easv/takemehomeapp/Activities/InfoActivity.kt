@@ -92,7 +92,7 @@ class InfoActivity : AppCompatActivity() {
             textView_fullName.text = "${lostUser.firstName} ${lostUser.lastName}"
             textView_phone.text = "${lostUser.phoneList[0]}"
             if (lostUser.picture != null) {
-                ib_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture!!.toString()))
+                ib_profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.lost1))
             } else {
                 ib_profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.addcameraicon))
             }
@@ -111,7 +111,7 @@ class InfoActivity : AppCompatActivity() {
 
     private fun onClickPhone() {
         val intent = Intent(Intent.ACTION_DIAL)
-        intent.data = Uri.parse("tel: ${lostUser.phoneList.split(" ").map { it.trim() }}")
+        intent.data = Uri.parse("tel: ${lostUser.phoneList[0]}")
         startActivity(intent)
     }
 
@@ -119,7 +119,7 @@ class InfoActivity : AppCompatActivity() {
         var mapsLink: String =
             "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse("sms: ${lostUser.phoneList.split(" ").map { it.trim() }}")
+        intent.data = Uri.parse("sms: ${lostUser.phoneList[0]}")
         intent.putExtra(
             "sms_body",
             "Hello, this is my location via sms: $mapsLink"
@@ -221,7 +221,7 @@ class InfoActivity : AppCompatActivity() {
                 var newPicture = data?.extras?.getSerializable("newPicture") as File
                 if (newPicture != null) {
                     ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
-                    lostUser.picture = newPicture
+                    lostUser.picture = newPicture as Int
                     lostUserDB.updateLostUser(lostUser)
                 }
             }
