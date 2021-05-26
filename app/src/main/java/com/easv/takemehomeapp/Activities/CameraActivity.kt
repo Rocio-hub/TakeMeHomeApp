@@ -43,6 +43,7 @@ class CameraActivity : AppCompatActivity() {
             )
         }
 
+        camera_capture_button.setBackgroundResource(R.drawable.ic_camerabutton)
         camera_capture_button.setOnClickListener { takePhoto() }
 
         outputDirectory = getOutputDirectory()

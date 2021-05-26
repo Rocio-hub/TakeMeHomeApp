@@ -24,7 +24,19 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\rtlop\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="C:\Users\rtlop\AppData\Local\Temp\baseline_camera_24.xml" />
+                                                <entry key="opacityPercent" value="80" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="clipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/camera/baseline_camera_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -52,6 +64,13 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="outputName" value="ic_camerabutton" />
+                                      <entry key="theme" value="CUSTOM" />
+                                      <entry key="themeColor" value="8762c4" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -278,6 +297,11 @@
                             </entry>
                           </map>
                         </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="ACTIONBAR" />
+                          </map>
+                        </option>
                       </PersistentState>
                     </value>
                   </entry>
@@ -301,7 +325,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/add_circle_outline/baseline_add_circle_outline_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/camera/baseline_camera_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -311,8 +335,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="c48130" />
-                            <entry key="outputName" value="ic_add" />
+                            <entry key="color" value="8762c4" />
+                            <entry key="outputName" value="ic_baseline_camera_24" />
                             <entry key="sourceFile" value="E:\Android Studio\Github\TakeMeHomeRepo" />
                           </map>
                         </option>
