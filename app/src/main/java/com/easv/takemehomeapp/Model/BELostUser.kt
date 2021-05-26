@@ -6,12 +6,12 @@ class BELostUser(
     var id: Int,
     var firstName: String,
     var lastName: String,
-    var phoneList: List<String>,
+    var phoneList: String,
     var email: String,
     var address: String,
     var CPR: Long,
-    var medicationList: List<String>,
-    var allergiesList: List<String>,
-    var diseasesList: List<String>,
+    var medicationList: String,
+    var allergiesList: String,
+    var diseasesList: String,
     var picture: Int
 ): Serializable

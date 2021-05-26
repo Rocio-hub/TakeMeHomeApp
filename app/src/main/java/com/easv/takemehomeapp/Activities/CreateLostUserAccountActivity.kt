@@ -15,7 +15,7 @@ import java.io.File
 
 class CreateLostUserAccountActivity : AppCompatActivity() {
 
-    private var newUser = BELostUser(0, "", "", mutableListOf(), "", "", 0, listOf(), listOf(), listOf(), 0)
+    private var newUser = BELostUser(0, "", "", "", "", "", 0, "", "", "", 0)
     private lateinit var lostUserDB: IUserDAO
     private val REQUEST_CODE = 101
 
@@ -35,10 +35,10 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
 
     private fun onClickSubmit() {
           if (validateInput()) {
-              var phoneList : List<String> = editText_phoneList.text.toString().split(" ")
-              var medicationList : List<String> = editText_medicationList.text.toString().split(" ")
-              var allergiesList : List<String> = editText_allergyList.text.toString().split(" ")
-              var diseasesList : List<String> = editText_diseaseList.text.toString().split(" ")
+              var phoneList = editText_phoneList.text.toString()
+              var medicationList = editText_medicationList.text.toString()
+              var allergiesList = editText_allergyList.text.toString()
+              var diseasesList = editText_diseaseList.text.toString()
 
               newUser.firstName  = editText_fullName.text.toString().split(" ")[0]
               newUser.lastName  = editText_fullName.text.toString().split(" ")[1]

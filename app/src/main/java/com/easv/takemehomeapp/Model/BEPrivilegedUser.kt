@@ -11,5 +11,5 @@ class BEPrivilegedUser (
     var CPR: Int,
     var role: String,
     var station: String,
-    var picture: String,
+    var picture: Int,
 ): Serializable

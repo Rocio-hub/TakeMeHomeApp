@@ -23,6 +23,6 @@ class ProfileActivity : AppCompatActivity() {
         textView_fullName.setText("${loggedUser.firstName} ${loggedUser.lastName}")
         textView_cpr.setText(Integer.toString(loggedUser.CPR))
         textView_station.setText(loggedUser.station)
-        //imageView_profilePicture.setImageDrawable()
+        imageButton_profilePicture.setImageDrawable(getResources().getDrawable(loggedUser.picture))
     }
 }

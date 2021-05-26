@@ -40,10 +40,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun insertTestData() {
-        val listOfPhones = listOf("50204598 20159748 31265487 40516581 42965214 49346582")
-        val listOfMedication = listOf("m e d i c a t i o n")
-        val listOfAllergies = listOf("a l l e r g i e s")
-        val listOfDiseases = listOf("d i s e a s e s")
+        val listOfPhones = "50204598 20159748 31265487 40516581 42965214 49346582"
+        val listOfMedication = "metformin enalapril"
+        val listOfAllergies = "peanut peony"
+        val listOfDiseases = "diabetes hypertension"
 
         usersDB.emptyDb()
         usersDB.insertLostUser(BELostUser(1, "Veronica", "Tapp", listOfPhones, "verotapp@easv", "Copenhague, Denmark", 1309501234, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost1))
@@ -53,9 +53,12 @@ class LoginActivity : AppCompatActivity() {
         usersDB.insertLostUser(BELostUser(5, "Silvana", "Verner", listOfPhones, "silvvern@easv", "Vejle, Denmark", 2508453216, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost5))
         usersDB.insertLostUser(BELostUser(6, "Thomas", "Jones", listOfPhones, "thomjone@easv", "Kolding, Denmark", 1306403165, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost6))
         usersDB.insertLostUser(BELostUser(7, "Michael", "Garcia", listOfPhones, "michgarc@easv", "Randers, Denmark", 2903476589, listOfMedication, listOfAllergies, listOfDiseases, R.drawable.lost7))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(1, "pol1", "p", "FIRSTNAME1", "LASTNAME1", 123, "police", "station", "PICTURE"))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(2, "doc1", "p", "FIRSTNAME2", "LASTNAME2", 456, "doctor", "station", "PICTURE"))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "nor1", "p", "FIRSTNAME3", "LASTNAME3", 789, "normal", "station", "PICTURE"))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(1, "kate1982", "abcd", "Kate", "Underwood", 1205823568, "normal", "", R.drawable.normal1))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(2, "justin1973", "abcd", "Justin", "Dawson", 1709732955, "normal", "", R.drawable.normal2))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "elizabeth1981", "abcd", "Elizabeth", "Elliott", 25031981, "doctor", "", R.drawable.doctor1))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(4, "dylan1986", "abcd", "Dylan", "Wells", 11111986, "doctor", "", R.drawable.doctor2))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(5, "AB1234", "abcd", "Scarlett", "Kent", 1408663654, "police", "Kolding station", R.drawable.police1))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(6, "CD9876", "abcd", "Luca", "Taylor", 28121965, "police", "Esbjerg station", R.drawable.police2))
     }
 
     private fun onClickSignUp() {

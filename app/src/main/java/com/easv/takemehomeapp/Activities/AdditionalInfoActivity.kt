@@ -86,7 +86,7 @@ class AdditionalInfoActivity : AppCompatActivity() {
 
     private fun setPhoneSpinner() {
         if (spinner_phoneList != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, phoneList)
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, lostUser.phoneList.split(" "))
             spinner_phoneList.adapter = adapter
             spinner_phoneList.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {

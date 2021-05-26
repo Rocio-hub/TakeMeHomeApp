@@ -90,7 +90,7 @@ class InfoActivity : AppCompatActivity() {
     private fun getUserInfo() {
         if (lostUser != null) {
             textView_fullName.text = "${lostUser.firstName} ${lostUser.lastName}"
-            textView_phone.text = "${lostUser.phoneList[0]}"
+            textView_phone.text = "${lostUser.phoneList.split(" ")[0]}"
             if (lostUser.picture != null) {
                 ib_profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.lost1))
             } else {

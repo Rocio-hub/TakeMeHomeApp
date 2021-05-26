@@ -91,7 +91,7 @@ class UserDAO_Impl(context: Context) :
                 val CPR = cursor.getInt(cursor.getColumnIndex("CPR"))
                 val role = cursor.getString(cursor.getColumnIndex("role"))
                 val station = cursor.getString(cursor.getColumnIndex("station"))
-                val picture = cursor.getString(cursor.getColumnIndex("picture"))
+                val picture = cursor.getInt(cursor.getColumnIndex("picture"))
                 myList.add(BEPrivilegedUser(id, username, password, firstName, lastName, CPR, role, station, picture))
             } while (cursor.moveToNext())
         }
@@ -164,15 +164,11 @@ class UserDAO_Impl(context: Context) :
         if (myList.isNotEmpty()) {
             return myList[0]
         } else {
-            return BELostUser(0, "", "", mutableListOf(), "", "", 0, listOf(), listOf(), listOf(), 0)
+            return BELostUser(0, "", "", "", "", "", 0, "", "", "", 0)
         }
     }
 
     private fun getByCursorLostUser(cursor: Cursor): List<BELostUser> {
-        val myPhoneList : MutableList<String> = mutableListOf()
-        val myMedicationList : MutableList<String> = mutableListOf()
-        val myAllergiesList : MutableList<String> = mutableListOf()
-        val myDiseasesList : MutableList<String> = mutableListOf()
 
         val myList = ArrayList<BELostUser>()
         if (cursor.moveToFirst()) {
@@ -180,29 +176,16 @@ class UserDAO_Impl(context: Context) :
                 val id = cursor.getInt(cursor.getColumnIndex("id"))
                 val firstName = cursor.getString(cursor.getColumnIndex("firstName"))
                 val lastName = cursor.getString(cursor.getColumnIndex("lastName"))
-                val phoneList = cursor.getString(cursor.getColumnIndex("phoneList")).split(" ")
+                val phoneList = cursor.getString(cursor.getColumnIndex("phoneList"))
                 val email = cursor.getString(cursor.getColumnIndex("email"))
                 val address = cursor.getString(cursor.getColumnIndex("address"))
                 val CPR = cursor.getLong(cursor.getColumnIndex("CPR"))
-                val medicationList = cursor.getString(cursor.getColumnIndex("medicationList")).split(" ")
-                val allergiesList = cursor.getString(cursor.getColumnIndex("allergiesList")).split(" ")
-                val diseasesList = cursor.getString(cursor.getColumnIndex("diseasesList")).split(" ")
+                val medicationList = cursor.getString(cursor.getColumnIndex("medicationList"))
+                val allergiesList = cursor.getString(cursor.getColumnIndex("allergiesList"))
+                val diseasesList = cursor.getString(cursor.getColumnIndex("diseasesList"))
                 val picture = cursor.getInt(cursor.getColumnIndex("picture"))
 
-                for(item in phoneList){
-                    myPhoneList.add(item)
-                }
-                for(item in medicationList){
-                    myMedicationList.add(item)
-                }
-                for(item in allergiesList){
-                    myAllergiesList.add(item)
-                }
-                for(item in diseasesList){
-                    myDiseasesList.add(item)
-                }
-
-                myList.add(BELostUser(id, firstName, lastName, myPhoneList, email, address, CPR, myMedicationList, myAllergiesList, myDiseasesList, picture))
+                myList.add(BELostUser(id, firstName, lastName, phoneList, email, address, CPR, medicationList, allergiesList, diseasesList, picture))
             } while (cursor.moveToNext())
         }
         return myList

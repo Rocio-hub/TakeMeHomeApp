@@ -15,7 +15,7 @@ import java.io.File
 
 class SignUpNormalUserActivity : AppCompatActivity() {
 
-    private var newUser = BEPrivilegedUser(0, "", "", "", "",  0, "", "", "")
+    private var newUser = BEPrivilegedUser(0, "", "", "", "",  0, "", "", 0)
     private lateinit var normalUserDB: IUserDAO
     private val REQUEST_CODE = 101
 
@@ -25,7 +25,7 @@ class SignUpNormalUserActivity : AppCompatActivity() {
 
         normalUserDB = UserDAO_Impl(this)
         newUser.role = "normal"
-        newUser.picture = "PICTURE STRING"
+        newUser.picture = 0
 
         ib_profilePicture.setImageResource(R.drawable.addcameraicon)
 
@@ -75,7 +75,7 @@ class SignUpNormalUserActivity : AppCompatActivity() {
             var newPicture = data?.extras?.getSerializable("newPicture") as File
             if(newPicture != null) {
                 ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture.toString()))
-                newUser.picture = newPicture.toString()
+                newUser.picture = newPicture as Int
             }
         }
     }
