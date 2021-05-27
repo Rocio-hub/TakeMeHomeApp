@@ -1,30 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.LoginActivity">
+    android:background="@drawable/grad_login">
+
 
     <RelativeLayout
         android:id="@+id/relative_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/grad_login">
+        android:layout_marginTop="16dp"
+>
 
         <RelativeLayout
             android:id="@+id/relative_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/tmhlogo"
+                android:layout_centerHorizontal="true" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                android:layout_marginTop="16dp"
                 android:layout_centerVertical="true"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="25dp"
                 android:gravity="center_horizontal"
                 android:text="LOG IN"
-                android:textSize="45sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -40,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
@@ -57,7 +69,7 @@
                         android:gravity="center_horizontal"
                         android:text="Incorrect username or password."
                         android:textSize="18sp"
-                        android:layout_marginBottom="40dp"/>
+                        android:layout_marginBottom="20dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -108,8 +120,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="20dp">
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/button_submit"
@@ -135,4 +146,4 @@
 
     </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>
