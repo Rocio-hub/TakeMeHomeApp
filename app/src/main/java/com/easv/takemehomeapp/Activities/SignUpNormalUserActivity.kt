@@ -8,8 +8,10 @@ import com.easv.takemehomeapp.Data.IUserDAO
 import com.easv.takemehomeapp.Data.UserDAO_Impl
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.R
+import kotlinx.android.synthetic.main.activity_create_lostuser_account.*
 import kotlinx.android.synthetic.main.activity_create_lostuser_account.button_submit
 import kotlinx.android.synthetic.main.activity_sign_up_normal_user.*
+import kotlinx.android.synthetic.main.activity_sign_up_normal_user.editText_cpr
 import java.io.File
 
 class SignUpNormalUserActivity : AppCompatActivity() {
@@ -79,5 +81,27 @@ class SignUpNormalUserActivity : AppCompatActivity() {
                 newUser.picture = newPicture
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("firstName", editText_firstName.text.toString())
+        outState.putString("lastName", editText_lastName.text.toString())
+        outState.putInt("cpr", editText_cpr.text.toString().toInt())
+        outState.putString("username", editText_username.text.toString())
+        outState.putString("password", editText_password.text.toString())
+        outState.putString("repPassword", editText_repPassword.text.toString())
+        outState.putSerializable("newUser", newUser)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        editText_firstName.setText(savedInstanceState.getString("firstName"))
+        editText_lastName.setText(savedInstanceState.getString("lastName"))
+        editText_cpr.setText(savedInstanceState.getInt("cpr"))
+        editText_username.setText(savedInstanceState.getString("username"))
+        editText_password.setText(savedInstanceState.getString("password"))
+        editText_repPassword.setText(savedInstanceState.getString("repPassword"))
+        newUser = savedInstanceState.getSerializable("newUser") as BEPrivilegedUser
     }
 }

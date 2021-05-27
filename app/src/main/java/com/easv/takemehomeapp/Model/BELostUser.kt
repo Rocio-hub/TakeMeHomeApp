@@ -5,8 +5,7 @@ import java.io.Serializable
 
 class BELostUser(
     var id: Int,
-    var firstName: String,
-    var lastName: String,
+    var fullName: String,
     var phoneList: String,
     var email: String,
     var address: String,

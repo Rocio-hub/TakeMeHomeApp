@@ -24,6 +24,7 @@ import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.Model.LostUsers
 import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_info.*
+import kotlinx.android.synthetic.main.activity_sign_up_normal_user.*
 import java.io.File
 
 
@@ -109,7 +110,7 @@ class InfoActivity : AppCompatActivity() {
 
     private fun getUserInfo() {
         if (lostUser != null) {
-            textView_fullName.text = "${lostUser.firstName} ${lostUser.lastName}"
+            textView_fullName.text = "${lostUser.fullName}"
             textView_phone.text = "${lostUser.phoneList.split(" ")[0]}"
             getMockPictures()
 

@@ -16,7 +16,7 @@ import java.io.File
 
 class CreateLostUserAccountActivity : AppCompatActivity() {
 
-    private var newUser = BELostUser(0, "", "", "", "", "", 0, "", "", "", null)
+    private var newUser = BELostUser(0, "", "", "", "", 0, "", "", "", null)
     private lateinit var lostUserDB: IUserDAO
     private lateinit var loggedUser: BEPrivilegedUser
     private val REQUEST_CODE = 101
@@ -29,7 +29,6 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
 
         lostUserDB = UserDAO_Impl(this)
-        newUser.picture = null
 
         ib_profilePicture.setImageResource(R.drawable.addcameraicon)
 
@@ -45,8 +44,7 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
             var allergiesList = editText_allergyList.text.toString()
             var diseasesList = editText_diseaseList.text.toString()
 
-            newUser.firstName = editText_fullName.text.toString().split(" ")[0]
-            newUser.lastName = editText_fullName.text.toString().split(" ")[1]
+            newUser.fullName = editText_fullName.text.toString().split(" ")[0]
             newUser.phoneList = phoneList
             newUser.email = editText_email.text.toString()
             newUser.address = editText_address.text.toString()
@@ -96,7 +94,35 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
             if (newPicture != null) {
                 ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture.toString()))
                 newUser.picture = newPicture
+                lostUserDB.updateLostUser(newUser)
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("fullName", editText_fullName.text.toString())
+        outState.putString("cpr", editText_cpr.text.toString())
+        outState.putString("address", editText_address.text.toString())
+        outState.putString("email", editText_email.text.toString())
+        outState.putString("phoneList", editText_phoneList.text.toString())
+        outState.putString("medicationList", editText_medicationList.text.toString())
+        outState.putString("allergiesList", editText_allergyList.text.toString())
+        outState.putString("diseasesList", editText_diseaseList.text.toString())
+        outState.putSerializable("newUser", newUser)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        editText_fullName.setText(savedInstanceState.getString("fullName"))
+        editText_cpr.setText(savedInstanceState.getString("cpr"))
+        editText_address.setText(savedInstanceState.getString("address"))
+        editText_email.setText(savedInstanceState.getString("email"))
+        editText_phoneList.setText(savedInstanceState.getString("phoneList"))
+        editText_medicationList.setText(savedInstanceState.getString("medicationList"))
+        editText_allergyList.setText(savedInstanceState.getString("allergiesList"))
+        editText_diseaseList.setText(savedInstanceState.getString("diseasesList"))
+        ib_profilePicture.setImageDrawable(Drawable.createFromPath(newUser.picture.toString()))
+        newUser = savedInstanceState.getSerializable("newUser") as BELostUser
     }
 }

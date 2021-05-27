@@ -10,13 +10,13 @@ import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import java.io.File
 
 class UserDAO_Impl(context: Context) :
-    SQLiteOpenHelper(context, "TakeMeHomeDB", null, 15), IUserDAO {
+    SQLiteOpenHelper(context, "TakeMeHomeDB", null, 16), IUserDAO {
 
 
     //Methods for both
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("CREATE TABLE PrivilegedUser (id INTEGER PRIMARY KEY, username TEXT, password TEXT, firstName TEXT, lastName TEXT, CPR INTEGER, role TEXT, station TEXT, picture TEXT)")
-        db?.execSQL("CREATE TABLE LostUser (id INTEGER PRIMARY KEY, firstName TEXT, lastName TEXT, phoneList INTEGER, email TEXT, address TEXT, CPR INTEGER, medicationList TEXT, allergiesList TEXT, diseasesList TEXT, picture String)")
+        db?.execSQL("CREATE TABLE LostUser (id INTEGER PRIMARY KEY, fullName TEXT, phoneList INTEGER, email TEXT, address TEXT, CPR INTEGER, medicationList TEXT, allergiesList TEXT, diseasesList TEXT, picture String)")
 
     }
 
@@ -103,8 +103,7 @@ class UserDAO_Impl(context: Context) :
     override fun insertLostUser(l: BELostUser) {
         val db = this.writableDatabase
         val cv = ContentValues()
-        cv.put("firstName", l.firstName)
-        cv.put("lastName", l.lastName)
+        cv.put("fullName", l.fullName)
         cv.put("phoneList", l.phoneList)
         cv.put("email", l.email)
         cv.put("address", l.address)
@@ -119,8 +118,7 @@ class UserDAO_Impl(context: Context) :
     override fun createLostUser(l: BELostUser) {
         val db = this.writableDatabase
         val cv = ContentValues()
-        cv.put("firstName", l.firstName)
-        cv.put("lastName", l.lastName)
+        cv.put("fullName", l.fullName)
         cv.put("phoneList", l.phoneList)
         cv.put("email", l.email)
         cv.put("address", l.address)
@@ -135,8 +133,7 @@ class UserDAO_Impl(context: Context) :
     override fun updateLostUser(l: BELostUser) {
         val db = this.writableDatabase
         val cv = ContentValues()
-        cv.put("firstName", l.firstName)
-        cv.put("lastName", l.lastName)
+        cv.put("fullName", l.fullName)
         cv.put("phoneList", l.phoneList.toString())
         cv.put("email", l.email)
         cv.put("address", l.address)
@@ -154,7 +151,7 @@ class UserDAO_Impl(context: Context) :
         val db = this.readableDatabase
         var cursor = db.query(
             "LostUser",
-            arrayOf("id", "firstName", "lastName", "phoneList", "email", "address", "CPR", "medicationList", "allergiesList", "diseasesList", "picture"),
+            arrayOf("id", "fullName", "phoneList", "email", "address", "CPR", "medicationList", "allergiesList", "diseasesList", "picture"),
             "id LIKE '$id'",
             null,
             null,
@@ -165,7 +162,7 @@ class UserDAO_Impl(context: Context) :
         if (myList.isNotEmpty()) {
             return myList[0]
         } else {
-            return BELostUser(0, "", "", "", "", "", 0, "", "", "", null)
+            return BELostUser(0, "", "", "", "", 0, "", "", "", null)
         }
     }
 
@@ -175,8 +172,7 @@ class UserDAO_Impl(context: Context) :
         if (cursor.moveToFirst()) {
             do {
                 val id = cursor.getInt(cursor.getColumnIndex("id"))
-                val firstName = cursor.getString(cursor.getColumnIndex("firstName"))
-                val lastName = cursor.getString(cursor.getColumnIndex("lastName"))
+                val fullName = cursor.getString(cursor.getColumnIndex("fullName"))
                 val phoneList = cursor.getString(cursor.getColumnIndex("phoneList"))
                 val email = cursor.getString(cursor.getColumnIndex("email"))
                 val address = cursor.getString(cursor.getColumnIndex("address"))
@@ -186,7 +182,7 @@ class UserDAO_Impl(context: Context) :
                 val diseasesList = cursor.getString(cursor.getColumnIndex("diseasesList"))
                 val picture = cursor.getString(cursor.getColumnIndex("picture"))
 
-                myList.add(BELostUser(id, firstName, lastName, phoneList, email, address, CPR, medicationList, allergiesList, diseasesList, File(picture)))
+                myList.add(BELostUser(id, fullName, phoneList, email, address, CPR, medicationList, allergiesList, diseasesList, File(picture)))
             } while (cursor.moveToNext())
         }
         return myList

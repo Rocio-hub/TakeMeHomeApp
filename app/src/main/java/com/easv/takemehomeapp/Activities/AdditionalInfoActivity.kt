@@ -37,7 +37,7 @@ class AdditionalInfoActivity : AppCompatActivity() {
 
         getMockPictures()
 
-        textView_username.setText("${lostUser.firstName} ${lostUser.lastName}")
+        textView_username.setText("${lostUser.fullName}")
 
         if (loggedUser.role.equals("police")) {
             textView_cpr.setText((lostUser.CPR).toString())

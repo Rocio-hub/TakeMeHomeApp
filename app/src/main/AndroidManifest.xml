@@ -23,7 +23,7 @@
         <activity android:name=".Activities.ListsActivity" />
         <activity android:name=".Activities.ProfileActivity" />
         <activity android:name=".Activities.AdditionalInfoActivity" />
-        <activity android:name=".Activities.CameraActivity" />
+        <activity android:name=".Activities.CameraActivity" android:screenOrientation="portrait" />
         <activity android:name=".Activities.CreateLostUserAccountActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -43,10 +43,11 @@
         <activity
             android:name=".Activities.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".Activities.CodeScannerActivity" />
+        <activity android:name=".Activities.CodeScannerActivity" android:screenOrientation="portrait" />
         <activity android:name=".Activities.InfoActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Activities.LoginActivity">
+        <activity android:name=".Activities.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
