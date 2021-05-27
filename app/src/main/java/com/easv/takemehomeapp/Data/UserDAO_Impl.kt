@@ -10,14 +10,13 @@ import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import java.io.File
 
 class UserDAO_Impl(context: Context) :
-    SQLiteOpenHelper(context, "TakeMeHomeDB", null, 16), IUserDAO {
+    SQLiteOpenHelper(context, "TakeMeHomeDB", null, 20), IUserDAO {
 
     //Methods for both
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("CREATE TABLE PrivilegedUser (id INTEGER PRIMARY KEY, username TEXT, password TEXT, firstName TEXT, lastName TEXT, CPR INTEGER, role TEXT, station TEXT, picture TEXT)")
-        db?.execSQL("CREATE TABLE LostUser (id INTEGER PRIMARY KEY, fullName TEXT, phoneList INTEGER, email TEXT, address TEXT, CPR INTEGER, medicationList TEXT, allergiesList TEXT, diseasesList TEXT, picture String)")
-
+        db?.execSQL("CREATE TABLE LostUser (id INTEGER PRIMARY KEY, fullName TEXT, phoneList INTEGER, email TEXT, address TEXT, CPR INTEGER UNIQUE, medicationList TEXT, allergiesList TEXT, diseasesList TEXT, picture String)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

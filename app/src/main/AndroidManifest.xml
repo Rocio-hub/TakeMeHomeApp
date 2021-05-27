@@ -45,7 +45,6 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".Activities.CodeScannerActivity" android:screenOrientation="portrait" />
         <activity android:name=".Activities.InfoActivity" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>

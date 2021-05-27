@@ -118,6 +118,10 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
                 "Please, enter enter a value for the list of diseases. Remember to separate them using a space."
             return false
         }
+        if (newUser.picture.length()<1){
+            Toast.makeText(this, "Please, provide a picture", Toast.LENGTH_SHORT).show()
+            return false
+        }
         return true
     }
 
