@@ -13,8 +13,6 @@ import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_login.*
 import java.io.File
 
-//private var privUsersDB: PrivilegedUsers = PrivilegedUsers()
-
 private lateinit var usersDB: IUserDAO
 private lateinit var privUserDB: IUserDAO
 private var loggedUser: BEPrivilegedUser? = null
@@ -41,7 +39,6 @@ class LoginActivity : AppCompatActivity() {
         val listOfMedication = "metformin enalapril"
         val listOfAllergies = "peanut peony"
         val listOfDiseases = "diabetes hypertension"
-        //usersDB.emptyDb()
         usersDB.insertLostUser(BELostUser(1, "Veronica Tapp", listOfPhones, "verotapp@easv", "Copenhague, Denmark", 1309501234, listOfMedication, listOfAllergies, listOfDiseases, File("")))
         usersDB.insertLostUser(BELostUser(2, "Ava Brown", listOfPhones, "avabrow@easv", "Aarhus, Denmark", 2101509546, listOfMedication, listOfAllergies, listOfDiseases, File("")))
         usersDB.insertLostUser(BELostUser(3, "Bob Smith", listOfPhones, "bobsmit@easv", "Esbjerg, Denmark", 1610493216, listOfMedication, listOfAllergies, listOfDiseases, File("")))
@@ -103,6 +100,5 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
     }
 }
