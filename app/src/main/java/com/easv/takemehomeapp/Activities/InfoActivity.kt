@@ -71,13 +71,6 @@ class InfoActivity : AppCompatActivity() {
         )
     }
 
-    override fun onBackPressed() {
-        var intent = Intent(this, CodeScannerActivity::class.java)
-        intent.putExtra("loggedUser", loggedUser)
-        startActivity(intent)
-        finish()
-    }
-
     private val permissions = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
     )
@@ -134,7 +127,7 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun onClickSms() {
-        var mapsLink: String =
+        var mapsLink =
             "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse("sms: ${lostUser.phoneList.split(" ")[0]}}")
@@ -278,5 +271,11 @@ class InfoActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        var intent = Intent(this, CodeScannerActivity::class.java)
+        intent.putExtra("loggedUser", loggedUser)
+        startActivity(intent)
     }
 }

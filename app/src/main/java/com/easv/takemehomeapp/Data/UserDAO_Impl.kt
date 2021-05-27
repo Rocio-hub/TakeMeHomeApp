@@ -134,13 +134,13 @@ class UserDAO_Impl(context: Context) :
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put("fullName", l.fullName)
-        cv.put("phoneList", l.phoneList.toString())
+        cv.put("phoneList", l.phoneList)
         cv.put("email", l.email)
         cv.put("address", l.address)
         cv.put("CPR", l.CPR)
-        cv.put("medicationList", l.medicationList.toString())
-        cv.put("allergiesList", l.allergiesList.toString())
-        cv.put("diseasesList", l.diseasesList.toString())
+        cv.put("medicationList", l.medicationList)
+        cv.put("allergiesList", l.allergiesList)
+        cv.put("diseasesList", l.diseasesList)
         cv.put("picture", l.picture.toString())
         val whereClause = "id=?"
         val whereArgs = arrayOf((l.id).toString())

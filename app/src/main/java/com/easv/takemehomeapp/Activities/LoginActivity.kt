@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
         usersDB.insertPrivilegedUser(BEPrivilegedUser(1, "kate1982", "abcd", "Kate", "Underwood", 1205823568, "normal", "", null))
         usersDB.insertPrivilegedUser(BEPrivilegedUser(2, "justin1973", "abcd", "Justin", "Dawson", 1709732955, "normal", "", null))
         usersDB.insertPrivilegedUser(BEPrivilegedUser(3, "elizabeth1981", "abcd", "Elizabeth", "Elliott", 25031981, "doctor", "", null))
-        usersDB.insertPrivilegedUser(BEPrivilegedUser(4, "dylan1986", "abcd", "Dylan", "Wells", 11111986, "doctor", "", null))
+        usersDB.insertPrivilegedUser(BEPrivilegedUser(4, "dylan1986", "abcd", "Dylan", "Wells", 11119186, "doctor", "", null))
         usersDB.insertPrivilegedUser(BEPrivilegedUser(5, "AB1234", "abcd", "Scarlett", "Kent", 1408663654, "police", "Kolding station", null))
         usersDB.insertPrivilegedUser(BEPrivilegedUser(6, "CD9876", "abcd", "Luca", "Taylor", 28121965, "police", "Esbjerg station",null))
     }
@@ -103,7 +103,7 @@ class LoginActivity : AppCompatActivity() {
         return true
     }
 
-    /*override fun onBackPressed() {
-        ProcessPhoenix.triggerRebirth(getApplicationContext());
-    }*/
+    override fun onBackPressed() {
+
+    }
 }
