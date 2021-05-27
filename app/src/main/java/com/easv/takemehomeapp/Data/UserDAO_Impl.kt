@@ -162,7 +162,7 @@ class UserDAO_Impl(context: Context) :
         if (myList.isNotEmpty()) {
             return myList[0]
         } else {
-            return BELostUser(0, "", "", "", "", 0, "", "", "", null)
+            return BELostUser(0, "", "", "", "", 0, "", "", "", File(""))
         }
     }
 

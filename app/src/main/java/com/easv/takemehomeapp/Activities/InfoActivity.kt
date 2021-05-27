@@ -89,15 +89,19 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun getMockPictures() {
-        ib_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture?.absolutePath))
-        when (lostUser.id) {
-            1 -> ib_profilePicture.setImageResource(R.drawable.lost1)
-            2 -> ib_profilePicture.setImageResource(R.drawable.lost2)
-            3 -> ib_profilePicture.setImageResource(R.drawable.lost3)
-            4 -> ib_profilePicture.setImageResource(R.drawable.lost4)
-            5 -> ib_profilePicture.setImageResource(R.drawable.lost5)
-            6 -> ib_profilePicture.setImageResource(R.drawable.lost6)
-            7 -> ib_profilePicture.setImageResource(R.drawable.lost7)
+        var size = lostUser.picture.length()
+        if (size < 1) {
+            when (lostUser.id) {
+                1 -> ib_profilePicture.setImageResource(R.drawable.lost1)
+                2 -> ib_profilePicture.setImageResource(R.drawable.lost2)
+                3 -> ib_profilePicture.setImageResource(R.drawable.lost3)
+                4 -> ib_profilePicture.setImageResource(R.drawable.lost4)
+                5 -> ib_profilePicture.setImageResource(R.drawable.lost5)
+                6 -> ib_profilePicture.setImageResource(R.drawable.lost6)
+                7 -> ib_profilePicture.setImageResource(R.drawable.lost7)
+            }
+        } else {
+            ib_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture?.absolutePath))
         }
     }
 
@@ -142,9 +146,9 @@ class InfoActivity : AppCompatActivity() {
         var mapsLink =
             "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
         val intent = Intent(Intent.ACTION_SEND)
-        intent.type = "plain/text"
-        val receiver = lostUser.email
-        intent.putExtra(Intent.EXTRA_EMAIL, receiver)
+        intent.type = "text/email"
+        intent.putExtra(Intent.EXTRA_EMAIL, lostUser.email)
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Take Me Home")
         intent.putExtra(
             Intent.EXTRA_TEXT,
             "Hello, this is my location via email: $mapsLink"

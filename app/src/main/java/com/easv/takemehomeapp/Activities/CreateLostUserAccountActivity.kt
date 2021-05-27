@@ -17,7 +17,7 @@ import java.lang.Double
 
 class CreateLostUserAccountActivity : AppCompatActivity() {
 
-    private var newUser = BELostUser(0, "", "", "", "", 0, "", "", "", null)
+    private var newUser = BELostUser(0, "", "", "", "", 0, "", "", "", File(""))
     private lateinit var lostUserDB: IUserDAO
     private lateinit var loggedUser: BEPrivilegedUser
     private val REQUEST_CODE = 101
@@ -60,8 +60,6 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
             intent.putExtra("loggedUser", loggedUser)
             startActivity(intent)
         }
-
-
 
         /*
          * TODO Check if user created exists on database already
