@@ -33,14 +33,13 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/textView_username"
+            android:id="@+id/textView_fullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profilePicture_layout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15sp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
+            android:fontFamily="@font/allerta"
             android:textSize="32sp"
             android:textStyle="bold"
             tools:text="Peter Parker" />
@@ -49,7 +48,7 @@
             android:id="@+id/textView_role"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView_username"
+            android:layout_below="@+id/textView_fullName"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif"
             android:paddingBottom="10dp"
@@ -84,15 +83,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Username"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/textView_identityNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
                     android:textSize="18sp"
                     tools:text="ABC1234" />
 
@@ -114,15 +111,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Complete name"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
+                    android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/textView_fullName"
+                    android:id="@+id/textView_completeName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
                     android:textSize="18sp"
                     tools:text="Peter Parker" />
 
@@ -144,15 +139,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CPR"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/textView_cpr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
                     android:textSize="18sp"
                     tools:text="012345679876" />
 
@@ -175,15 +168,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Police station"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/textView_station"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
                     android:textSize="18sp"
                     tools:text="Esbjerg" />
 

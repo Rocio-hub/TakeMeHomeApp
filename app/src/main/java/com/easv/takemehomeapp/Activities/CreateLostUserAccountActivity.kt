@@ -31,11 +31,9 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
 
         lostUserDB = UserDAO_Impl(this)
 
-        ib_profilePicture.setImageResource(R.drawable.addcameraicon)
-
-        ib_profilePicture.setOnClickListener { v -> onClickPicture() }
+        imageButton_profilePicture.setImageResource(R.drawable.addcameraicon)
+        imageButton_profilePicture.setOnClickListener { v -> onClickPicture() }
         button_submit.setOnClickListener { v -> onClickSubmit() }
-
     }
 
     private fun onClickSubmit() {
@@ -60,10 +58,6 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
             intent.putExtra("loggedUser", loggedUser)
             startActivity(intent)
         }
-
-        /*
-         * TODO Check if user created exists on database already
-         */
     }
 
     private fun onClickPicture() {
@@ -92,7 +86,9 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
             editText_address.error = "Please, enter enter a value for the address"
             return false
         }
-        if (editText_email.text.toString() == "" || !editText_email.text.toString().contains("@") || !editText_email.text.toString().contains(".")) {
+        if (editText_email.text.toString() == "" || !editText_email.text.toString()
+                .contains("@") || !editText_email.text.toString().contains(".")
+        ) {
             editText_email.error = "Please, enter enter a value for the email."
             return false
         }
@@ -103,19 +99,23 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
                 "Please, enter enter a value for the phone numbers."
         }
         if (editText_phoneList.text.toString() == "") {
-            editText_phoneList.error = "Please, enter enter a value for the list of phones. Remember to separate them using a space."
+            editText_phoneList.error =
+                "Please, enter enter a value for the list of phones. Remember to separate them using a space."
             return false
         }
         if (editText_medicationList.text.toString() == "") {
-            editText_medicationList.error = "Please, enter enter a value for the list of medicines. Remember to separate them using a space."
+            editText_medicationList.error =
+                "Please, enter enter a value for the list of medicines. Remember to separate them using a space."
             return false
         }
         if (editText_allergyList.text.toString() == "") {
-            editText_allergyList.error = "Please, enter enter a value for the list of ellergies. Remember to separate them using a space."
+            editText_allergyList.error =
+                "Please, enter enter a value for the list of ellergies. Remember to separate them using a space."
             return false
         }
         if (editText_diseaseList.text.toString() == "") {
-            editText_diseaseList.error = "Please, enter enter a value for the list of diseases. Remember to separate them using a space."
+            editText_diseaseList.error =
+                "Please, enter enter a value for the list of diseases. Remember to separate them using a space."
             return false
         }
         return true
@@ -130,7 +130,7 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             var newPicture = data?.extras?.getSerializable("newPicture") as File
             if (newPicture != null) {
-                ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture.toString()))
+                imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture.toString()))
                 newUser.picture = newPicture
                 lostUserDB.updateLostUser(newUser)
             }
@@ -146,7 +146,7 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
         outState.putString("medicationList", editText_medicationList.text.toString())
         outState.putString("allergiesList", editText_allergyList.text.toString())
         outState.putString("diseasesList", editText_diseaseList.text.toString())
-        outState.putSerializable("newUser", newUser)
+        outState.putString("picture", newUser.picture.toString())
         super.onSaveInstanceState(outState)
     }
 
@@ -160,8 +160,7 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
         editText_medicationList.setText(savedInstanceState.getString("medicationList"))
         editText_allergyList.setText(savedInstanceState.getString("allergiesList"))
         editText_diseaseList.setText(savedInstanceState.getString("diseasesList"))
-        ib_profilePicture.setImageDrawable(Drawable.createFromPath(newUser.picture.toString()))
-        newUser = savedInstanceState.getSerializable("newUser") as BELostUser
+        imageButton_profilePicture.setImageDrawable(Drawable.createFromPath("picture"))
     }
 
     private fun checkContainNumber(value: String): Boolean {

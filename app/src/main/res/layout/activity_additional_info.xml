@@ -32,14 +32,13 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/textView_username"
+            android:id="@+id/textView_fullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profilePicture_layout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15sp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
+            android:fontFamily="@font/allerta"
             android:textSize="32sp"
             android:textStyle="bold"
             tools:text="Peter Parker" />
@@ -71,7 +70,6 @@
                 android:fontFamily="sans-serif-light"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="PERSONAL INFORMATION"
-                android:textColor="@color/white"
                 android:textSize="23sp"
                 android:textStyle="bold" />
 
@@ -104,15 +102,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CPR"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/textView_cpr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
                     android:textSize="18sp"
                     tools:text="012345679876" />
 
@@ -121,8 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="List of allergies"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp"
+                    android:textSize="18sp"
                     android:onClick="onClickAllergies"
                     android:layout_gravity="center_horizontal"/>
 
@@ -147,15 +142,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Address"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/textView_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
                     android:textSize="18sp"
                     tools:text="Address" />
 
@@ -164,8 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="List of diseases"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp"
+                    android:textSize="18sp"
                     android:onClick="onClickDiseases"
                     android:layout_gravity="center_horizontal"/>
 
@@ -190,9 +182,8 @@
                     android:id="@+id/label_phoneList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="List of phones"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
+                    android:text="List of phone numbers"
+                    android:textSize="15sp" />
 
                 <Spinner
                     android:id="@+id/spinner_phoneList"
@@ -203,9 +194,8 @@
                     android:id="@+id/button_medication"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="List of medication"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp"
+                    android:text="List of medicines"
+                    android:textSize="18sp"
                     android:onClick="onClickMedication"
                     android:layout_gravity="center_horizontal"/>
 
@@ -230,15 +220,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="E-mail"
-                    android:textColor="@color/gradEnd"
-                    android:textSize="13sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/textView_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
                     android:textSize="18sp"
                     tools:text="Esbjerg" />
 

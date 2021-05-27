@@ -119,7 +119,6 @@ class SignUpNormalUserActivity : AppCompatActivity() {
         outState.putString("username", editText_username.text.toString())
         outState.putString("password", editText_password.text.toString())
         outState.putString("repPassword", editText_repPassword.text.toString())
-        outState.putSerializable("newUser", newUser)
         super.onSaveInstanceState(outState)
     }
 
@@ -131,7 +130,6 @@ class SignUpNormalUserActivity : AppCompatActivity() {
         editText_username.setText(savedInstanceState.getString("username"))
         editText_password.setText(savedInstanceState.getString("password"))
         editText_repPassword.setText(savedInstanceState.getString("repPassword"))
-        newUser = savedInstanceState.getSerializable("newUser") as BEPrivilegedUser
     }
 
     private fun checkContainNumber(value: String): Boolean {

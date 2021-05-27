@@ -51,7 +51,7 @@ class InfoActivity : AppCompatActivity() {
         getLocation()
 
 
-        ib_profilePicture.setOnClickListener { v -> onClickProfilePicture() }
+        imageButton_profilePicture.setOnClickListener { v -> onClickProfilePicture() }
         textView_phone.setOnClickListener { v -> onClickPhone() }
         imageButton_sms.setOnClickListener { v -> onClickSms() }
         imageButton_email.setOnClickListener { v -> onClickEmail() }
@@ -92,16 +92,16 @@ class InfoActivity : AppCompatActivity() {
         var size = lostUser.picture.length()
         if (size < 1) {
             when (lostUser.id) {
-                1 -> ib_profilePicture.setImageResource(R.drawable.lost1)
-                2 -> ib_profilePicture.setImageResource(R.drawable.lost2)
-                3 -> ib_profilePicture.setImageResource(R.drawable.lost3)
-                4 -> ib_profilePicture.setImageResource(R.drawable.lost4)
-                5 -> ib_profilePicture.setImageResource(R.drawable.lost5)
-                6 -> ib_profilePicture.setImageResource(R.drawable.lost6)
-                7 -> ib_profilePicture.setImageResource(R.drawable.lost7)
+                1 -> imageButton_profilePicture.setImageResource(R.drawable.lost1)
+                2 -> imageButton_profilePicture.setImageResource(R.drawable.lost2)
+                3 -> imageButton_profilePicture.setImageResource(R.drawable.lost3)
+                4 -> imageButton_profilePicture.setImageResource(R.drawable.lost4)
+                5 -> imageButton_profilePicture.setImageResource(R.drawable.lost5)
+                6 -> imageButton_profilePicture.setImageResource(R.drawable.lost6)
+                7 -> imageButton_profilePicture.setImageResource(R.drawable.lost7)
             }
         } else {
-            ib_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture?.absolutePath))
+            imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(lostUser.picture?.absolutePath))
         }
     }
 
@@ -146,14 +146,20 @@ class InfoActivity : AppCompatActivity() {
         var mapsLink =
             "https://www.google.com/maps/search/?api=1&query=$currentLocationLat,$currentLocationLon"
         val intent = Intent(Intent.ACTION_SEND)
-        intent.type = "text/email"
-        intent.putExtra(Intent.EXTRA_EMAIL, lostUser.email)
+        intent.data = Uri.parse("mailto:")
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_EMAIL, lostUser.email.trim())
         intent.putExtra(Intent.EXTRA_SUBJECT, "Take Me Home")
         intent.putExtra(
             Intent.EXTRA_TEXT,
             "Hello, this is my location via email: $mapsLink"
         )
-        startActivity(intent)
+        try {
+            startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun onClickMap() {
@@ -234,7 +240,7 @@ class InfoActivity : AppCompatActivity() {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             var newPicture = data?.extras?.getSerializable("newPicture") as File
             if (newPicture != null) {
-                ib_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
+                imageButton_profilePicture.setImageDrawable(Drawable.createFromPath(newPicture?.absolutePath))
                 lostUser.picture = newPicture
                 lostUserDB.updateLostUser(lostUser)
             }

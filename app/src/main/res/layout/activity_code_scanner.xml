@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/scan_label"
         android:layout_centerHorizontal="true"
+        android:textSize="24sp"
         android:text="Go" />
 
 </RelativeLayout>

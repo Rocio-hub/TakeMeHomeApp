@@ -19,10 +19,11 @@ class ProfileActivity : AppCompatActivity() {
         var extras: Bundle = intent.extras!! // We get the extras sent from the previous activity
 
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
-        textView_username.setText(loggedUser.firstName)
+        textView_fullName.setText(loggedUser.firstName)
         textView_role.setText("${loggedUser.role}")
         textView_identityNo.setText("${loggedUser.username}")
-        textView_fullName.setText("${loggedUser.firstName} ${loggedUser.lastName}")
+        textView_fullName.setText("${loggedUser.firstName}")
+        textView_completeName.setText("${loggedUser.firstName} ${loggedUser.lastName}")
         textView_cpr.setText(Integer.toString(loggedUser.CPR))
         getMockPictures()
         if (loggedUser.role != "police") {
