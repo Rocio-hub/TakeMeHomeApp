@@ -46,9 +46,6 @@ class SignUpNormalUserActivity : AppCompatActivity() {
             intent.putExtra("loggedUser", newUser)
             startActivity(intent)
         }
-        /*
-         * TODO Check if user created exists on database already
-         */
     }
 
     private fun validateInput(): Boolean {

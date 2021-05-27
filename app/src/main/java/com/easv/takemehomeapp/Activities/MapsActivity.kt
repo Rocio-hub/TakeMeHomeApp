@@ -20,7 +20,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(R.layout.activity_maps)
 
         var extras: Bundle = intent.extras!!
-        currentLocation = LatLng(extras.getDouble("currentLocationLat"), extras.getDouble("currentLocationLon"))
+        currentLocation =
+            LatLng(extras.getDouble("currentLocationLat"), extras.getDouble("currentLocationLon"))
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager

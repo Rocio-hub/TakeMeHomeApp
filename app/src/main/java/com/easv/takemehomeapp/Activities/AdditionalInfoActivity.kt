@@ -18,10 +18,6 @@ class AdditionalInfoActivity : AppCompatActivity() {
 
     private lateinit var loggedUser: BEPrivilegedUser
     private lateinit var lostUser: BELostUser
-    private var phoneList = listOf<String>()
-    private var allergieList = listOf<String>()
-    private var medicationList = listOf<String>()
-    private var diseaseList = listOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,34 +30,34 @@ class AdditionalInfoActivity : AppCompatActivity() {
         var extras: Bundle = intent.extras!! // We get the extras sent from the previous activity
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
         lostUser = extras.getSerializable("lostUser") as BELostUser
+        textView_fullName.text = lostUser.fullName
 
         getMockPictures()
 
-        textView_fullName.text = lostUser.fullName
-
-        if (loggedUser.role.equals("police")) {
-            textView_cpr.setText((lostUser.CPR).toString())
-            textView_address.setText(lostUser.address)
-            textView_email.setText(lostUser.email)
-            button_allergies.isVisible = false
-            button_diseases.isVisible = false
-            button_medication.isVisible = false
-        }
-
-        if (loggedUser.role.equals("doctor")) {
-            label.setText("MEDICAL INFORMATION")
-            line1.isVisible = false
-            line2.isVisible = false
-            line3.isVisible = false
-            line4.isVisible = false
-            label_cpr.isVisible = false
-            label_address.isVisible = false
-            label_phoneList.isVisible = false
-            label_email.isVisible = false
-            textView_cpr.isVisible = false
-            textView_address.isVisible = false
-            spinner_phoneList.isVisible = false
-            textView_email.isVisible = false
+        when (loggedUser.role) {
+            "police" -> {
+                textView_cpr.setText((lostUser.CPR).toString())
+                textView_address.setText(lostUser.address)
+                textView_email.setText(lostUser.email)
+                button_allergies.isVisible = false
+                button_diseases.isVisible = false
+                button_medication.isVisible = false
+            }
+            "doctor" -> {
+                label.setText("MEDICAL INFORMATION")
+                line1.isVisible = false
+                line2.isVisible = false
+                line3.isVisible = false
+                line4.isVisible = false
+                label_cpr.isVisible = false
+                label_address.isVisible = false
+                label_phoneList.isVisible = false
+                label_email.isVisible = false
+                textView_cpr.isVisible = false
+                textView_address.isVisible = false
+                spinner_phoneList.isVisible = false
+                textView_email.isVisible = false
+            }
         }
         setPhoneSpinner()
     }

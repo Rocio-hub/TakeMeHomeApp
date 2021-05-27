@@ -21,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.easv.takemehomeapp.Data.UserDAO_Impl
 import com.easv.takemehomeapp.Model.BELostUser
 import com.easv.takemehomeapp.Model.BEPrivilegedUser
-import com.easv.takemehomeapp.Model.LostUsers
 import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_info.*
 import kotlinx.android.synthetic.main.activity_sign_up_normal_user.*
@@ -33,14 +32,12 @@ class InfoActivity : AppCompatActivity() {
 
     private val REQUEST_CODE = 101
 
-    private var lostUsersDB: LostUsers = LostUsers()
     private var lostUserDB = UserDAO_Impl(this)
     private lateinit var loggedUser: BEPrivilegedUser
     private lateinit var lostUser: BELostUser
     private var currentLocationLat: Double = 0.0
     private var currentLocationLon: Double = 0.0
     private var myLocationListener: LocationListener? = null //Initialize the Location Listener
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +47,6 @@ class InfoActivity : AppCompatActivity() {
         startListening()
         getLocation()
 
-
         imageButton_profilePicture.setOnClickListener { v -> onClickProfilePicture() }
         textView_phone.setOnClickListener { v -> onClickPhone() }
         imageButton_sms.setOnClickListener { v -> onClickSms() }
@@ -59,10 +55,8 @@ class InfoActivity : AppCompatActivity() {
         button_additInfo.setOnClickListener { v -> onClickAdditInfo() }
 
         var extras: Bundle = intent.extras!! // We get the extras sent from the previous activity
-
         lostUser = extras.getSerializable("lostUser") as BELostUser
         loggedUser = extras.getSerializable("loggedUser") as BEPrivilegedUser
-
 
         getUserInfo()
 
@@ -109,6 +103,7 @@ class InfoActivity : AppCompatActivity() {
         if (lostUser != null) {
             textView_fullName.text = "${lostUser.fullName}"
             textView_phone.text = "${lostUser.phoneList.split(" ")[0]}"
+
             getMockPictures()
 
             Linkify.addLinks(textView_phone, Linkify.ALL);
@@ -159,7 +154,6 @@ class InfoActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
         }
-
     }
 
     private fun onClickMap() {

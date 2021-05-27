@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:baselineAligned="false">
 
@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/allerta"
-                    android:text="PETER PARKER"
+                    android:text="@string/peter_parker"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -47,9 +47,13 @@
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:adjustViewBounds="true"
                     android:background="@drawable/grad_login"
+                    android:contentDescription="@string/profile_picture"
                     android:scaleType="centerInside" />
 
                 <LinearLayout
@@ -64,7 +68,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="Additional info"
+                        android:text="@string/additional_info"
                         android:textSize="24sp" />
 
                 </LinearLayout>
@@ -95,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="16dp"
-                        android:text="Please, if you found me call"
+                        android:text="@string/please_if_you_found_me_call"
                         android:textSize="24sp" />
 
                     <LinearLayout
@@ -111,6 +115,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_marginTop="16dp"
+                            android:contentDescription="@string/icon_phone"
                             android:src="@drawable/ic_baseline_local_phone_24" />
 
                         <TextView
@@ -120,7 +125,8 @@
                             android:layout_marginTop="16dp"
                             android:clickable="true"
                             android:textSize="24sp"
-                            tools:text="123456789" />
+                            tools:text="123456789"
+                            android:focusable="true" />
 
                     </LinearLayout>
 
@@ -130,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="16dp"
-                        android:text="or send my location via"
+                        android:text="@string/or_send_my_location_via"
                         android:textSize="24sp" />
 
                     <RelativeLayout
@@ -153,20 +159,20 @@
                                     android:id="@+id/imageButton_sms"
                                     android:layout_width="100dp"
                                     android:layout_height="60dp"
+                                    android:contentDescription="@string/icon_sms"
                                     android:src="@drawable/ic_baseline_sms_24" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="sms" />
+                                    android:text="@string/sms" />
 
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
                                 android:layout_marginTop="16dp"
                                 android:orientation="vertical">
 
@@ -174,13 +180,14 @@
                                     android:id="@+id/imageButton_email"
                                     android:layout_width="100dp"
                                     android:layout_height="60dp"
+                                    android:contentDescription="@string/icon_email"
                                     android:src="@drawable/ic_baseline_email_24" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="e-mail" />
+                                    android:text="@string/e_mail" />
 
                             </LinearLayout>
 
@@ -205,12 +212,13 @@
                                 android:id="@+id/imageButton_map"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
+                                android:contentDescription="@string/icon_map"
                                 android:src="@drawable/ic_baseline_map_24" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="See current location"
+                                android:text="@string/see_current_location"
                                 android:layout_marginTop="16dp"
                                 android:textSize="24sp" />
 

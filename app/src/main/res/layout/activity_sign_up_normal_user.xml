@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context="Activities.SignUpNormalUserActivity">
 
         <RelativeLayout
@@ -37,10 +37,11 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
-                        android:scaleType="centerInside"
                         android:adjustViewBounds="true"
-                        android:background="@drawable/grad_login"
-                        android:padding="3dp" />
+                        android:src="@drawable/addcameraicon"
+                        android:contentDescription="@string/profile_picture"
+                        android:padding="3dp"
+                        android:scaleType="centerInside" />
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -68,9 +69,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="First Name"
-                            android:textColor="@color/gradEnd"
-                            android:textSize="13sp" />
+                            android:text="@string/first_name"
+                            android:textSize="15sp" />
 
                         <EditText
                             android:id="@+id/editText_firstName"
@@ -78,7 +78,9 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:autofillHints=""
+                            android:inputType="text" />
 
                     </LinearLayout>
 
@@ -91,17 +93,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Last Name"
-                            android:textColor="@color/gradEnd"
-                            android:textSize="13sp" />
+                            android:text="@string/last_name"
+                            android:textSize="15sp" />
 
                         <EditText
                             android:id="@+id/editText_lastName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:inputType="text" />
 
                     </LinearLayout>
 
@@ -114,17 +115,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="CPR"
-                            android:textColor="@color/gradEnd"
-                            android:textSize="13sp" />
+                            android:text="@string/cpr"
+                            android:textSize="15sp" />
 
                         <EditText
                             android:id="@+id/editText_cpr"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:inputType="number" />
 
                     </LinearLayout>
 
@@ -137,16 +137,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Username"
-                            android:textColor="@color/gradEnd"
-                            android:textSize="13sp" />
+                            android:text="@string/username"
+                            android:textSize="15sp" />
 
                         <EditText
                             android:id="@+id/editText_username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:textColor="#000000"
                             android:textSize="18sp" />
 
                     </LinearLayout>
@@ -160,16 +158,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Password"
-                            android:textColor="@color/gradEnd"
-                            android:textSize="13sp" />
+                            android:text="@string/password"
+                            android:textSize="15sp" />
 
                         <EditText
                             android:id="@+id/editText_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:textColor="#000000"
                             android:textSize="18sp" />
 
                     </LinearLayout>
@@ -184,8 +180,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Repeat password"
-                            android:textColor="@color/gradEnd"
-                            android:textSize="13sp" />
+                            android:textSize="15sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -197,7 +192,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="sans-serif-light"
-                                android:textColor="#000000"
                                 android:textSize="18sp" />
 
                         </LinearLayout>
@@ -216,7 +210,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:text="Submit" />
+                            android:text="@string/submit"
+                            android:textSize="18sp"/>
 
                     </LinearLayout>
 

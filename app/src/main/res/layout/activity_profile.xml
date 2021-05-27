@@ -23,9 +23,13 @@
                 android:id="@+id/imageButton_profilePicture"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_margin="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/grad_login"
+                android:contentDescription="@string/profile_picture"
                 android:padding="3dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/mockpicture" />
@@ -82,7 +86,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Username"
+                    android:text="@string/username"
                     android:textSize="15sp" />
 
                 <TextView
@@ -110,7 +114,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Complete name"
+                    android:text="@string/complete_name"
                     android:textSize="15sp" />
 
                 <TextView
@@ -138,7 +142,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CPR"
+                    android:text="@string/cpr"
                     android:textSize="15sp" />
 
                 <TextView
@@ -167,7 +171,7 @@
                     android:id="@+id/label_station"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Police station"
+                    android:text="@string/police_station"
                     android:textSize="15sp" />
 
                 <TextView

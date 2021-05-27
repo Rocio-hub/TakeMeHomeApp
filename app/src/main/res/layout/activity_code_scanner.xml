@@ -23,7 +23,7 @@
         android:layout_below="@+id/scanner_view"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
-        android:text="Scanning..."
+        android:text="@string/scanning"
         android:textColor="@color/black" />
 
     <Button
@@ -33,6 +33,6 @@
         android:layout_below="@+id/scan_label"
         android:layout_centerHorizontal="true"
         android:textSize="24sp"
-        android:text="Go" />
+        android:text="@string/go" />
 
 </RelativeLayout>

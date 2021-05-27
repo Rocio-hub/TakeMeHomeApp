@@ -14,4 +14,4 @@ class BELostUser(
     var allergiesList: String,
     var diseasesList: String,
     var picture: File
-): Serializable
+) : Serializable

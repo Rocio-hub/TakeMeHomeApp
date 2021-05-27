@@ -25,7 +25,9 @@ class ProfileActivity : AppCompatActivity() {
         textView_fullName.setText("${loggedUser.firstName}")
         textView_completeName.setText("${loggedUser.firstName} ${loggedUser.lastName}")
         textView_cpr.setText(Integer.toString(loggedUser.CPR))
+
         getMockPictures()
+
         if (loggedUser.role != "police") {
             textView_station.setVisibility(View.GONE)
             label_station.setVisibility(View.GONE)

@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:baselineAligned="false"
         android:orientation="horizontal">
 
@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/allerta"
-                    android:text="PETER PARKER"
+                    android:text="@string/peter_parker"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -47,8 +47,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:adjustViewBounds="true"
+                    android:contentDescription="@string/profile_picture"
                     android:padding="3dp"
                     android:scaleType="centerInside" />
 
@@ -72,7 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="PERSONAL INFORMATION"
+                    android:text="@string/personal_information"
                     android:textAlignment="center"
                     android:background="@color/dust"
                     android:textSize="23sp"
@@ -105,7 +109,7 @@
                             android:id="@+id/lable_cpr"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="CPR"
+                            android:text="@string/cpr"
                             android:textSize="15sp" />
 
                         <TextView
@@ -122,7 +126,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:onClick="onClickAllergies"
-                            android:text="List of allergies"
+                            android:text="@string/list_of_allergies"
                             android:textSize="15sp" />
 
                         <View
@@ -145,7 +149,7 @@
                             android:id="@+id/label_address"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Address"
+                            android:text="@string/address"
                             android:textSize="15sp" />
 
                         <TextView
@@ -162,7 +166,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:onClick="onClickDiseases"
-                            android:text="List of diseases"
+                            android:text="@string/list_of_diseases"
                             android:textSize="15sp" />
 
                         <View
@@ -185,7 +189,7 @@
                             android:id="@+id/label_phoneList"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="List of phones"
+                            android:text="@string/list_of_phones"
                             android:textSize="15sp" />
 
                         <Spinner
@@ -199,7 +203,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:onClick="onClickMedication"
-                            android:text="List of medication"
+                            android:text="@string/list_of_medication"
                             android:textSize="15sp" />
 
                         <View
@@ -222,7 +226,7 @@
                             android:id="@+id/label_email"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="E-mail"
+                            android:text="@string/e_mail"
                             android:textSize="15sp" />
 
                         <TextView

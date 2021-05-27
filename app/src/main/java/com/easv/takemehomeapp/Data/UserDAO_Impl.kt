@@ -12,8 +12,8 @@ import java.io.File
 class UserDAO_Impl(context: Context) :
     SQLiteOpenHelper(context, "TakeMeHomeDB", null, 16), IUserDAO {
 
-
     //Methods for both
+
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("CREATE TABLE PrivilegedUser (id INTEGER PRIMARY KEY, username TEXT, password TEXT, firstName TEXT, lastName TEXT, CPR INTEGER, role TEXT, station TEXT, picture TEXT)")
         db?.execSQL("CREATE TABLE LostUser (id INTEGER PRIMARY KEY, fullName TEXT, phoneList INTEGER, email TEXT, address TEXT, CPR INTEGER, medicationList TEXT, allergiesList TEXT, diseasesList TEXT, picture String)")
@@ -33,6 +33,7 @@ class UserDAO_Impl(context: Context) :
     }
 
     //Methods for privileged users
+
     override fun insertPrivilegedUser(p: BEPrivilegedUser) {
         val db = this.writableDatabase
         val cv = ContentValues()
@@ -65,14 +66,24 @@ class UserDAO_Impl(context: Context) :
         val db = this.readableDatabase
         var cursor = db.query(
             "PrivilegedUser",
-            arrayOf("id", "username", "password", "firstName", "lastName", "CPR", "role", "station", "picture"),
+            arrayOf(
+                "id",
+                "username",
+                "password",
+                "firstName",
+                "lastName",
+                "CPR",
+                "role",
+                "station",
+                "picture"
+            ),
             "username LIKE '$username' AND password LIKE '$password'",
             null,
             null,
             null,
             null
         )
-        var myList : List<BEPrivilegedUser> = getByCursorPrivilegedUser(cursor)
+        var myList: List<BEPrivilegedUser> = getByCursorPrivilegedUser(cursor)
         if (myList.isNotEmpty()) {
             return myList[0]
         } else {
@@ -93,13 +104,26 @@ class UserDAO_Impl(context: Context) :
                 val role = cursor.getString(cursor.getColumnIndex("role"))
                 val station = cursor.getString(cursor.getColumnIndex("station"))
                 val picture = cursor.getString(cursor.getColumnIndex("picture"))
-                myList.add(BEPrivilegedUser(id, username, password, firstName, lastName, CPR, role, station, File(picture)))
+                myList.add(
+                    BEPrivilegedUser(
+                        id,
+                        username,
+                        password,
+                        firstName,
+                        lastName,
+                        CPR,
+                        role,
+                        station,
+                        File(picture)
+                    )
+                )
             } while (cursor.moveToNext())
         }
         return myList
     }
 
     //Methods for lost users
+
     override fun insertLostUser(l: BELostUser) {
         val db = this.writableDatabase
         val cv = ContentValues()
@@ -151,7 +175,18 @@ class UserDAO_Impl(context: Context) :
         val db = this.readableDatabase
         var cursor = db.query(
             "LostUser",
-            arrayOf("id", "fullName", "phoneList", "email", "address", "CPR", "medicationList", "allergiesList", "diseasesList", "picture"),
+            arrayOf(
+                "id",
+                "fullName",
+                "phoneList",
+                "email",
+                "address",
+                "CPR",
+                "medicationList",
+                "allergiesList",
+                "diseasesList",
+                "picture"
+            ),
             "id LIKE '$id'",
             null,
             null,
@@ -167,7 +202,6 @@ class UserDAO_Impl(context: Context) :
     }
 
     private fun getByCursorLostUser(cursor: Cursor): List<BELostUser> {
-
         val myList = ArrayList<BELostUser>()
         if (cursor.moveToFirst()) {
             do {
@@ -182,10 +216,22 @@ class UserDAO_Impl(context: Context) :
                 val diseasesList = cursor.getString(cursor.getColumnIndex("diseasesList"))
                 val picture = cursor.getString(cursor.getColumnIndex("picture"))
 
-                myList.add(BELostUser(id, fullName, phoneList, email, address, CPR, medicationList, allergiesList, diseasesList, File(picture)))
+                myList.add(
+                    BELostUser(
+                        id,
+                        fullName,
+                        phoneList,
+                        email,
+                        address,
+                        CPR,
+                        medicationList,
+                        allergiesList,
+                        diseasesList,
+                        File(picture)
+                    )
+                )
             } while (cursor.moveToNext())
         }
         return myList
     }
-
 }

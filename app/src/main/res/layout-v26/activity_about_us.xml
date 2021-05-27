@@ -41,18 +41,17 @@
             android:layout_marginRight="30dp"
             android:text="@string/our_mission_is_to_give_people_the_power_to_help_the_ones_in_need_by_bringing_them_this_help_within_hand_reach"
             android:textAlignment="viewStart"
-            android:textSize="18sp"
-            tools:targetApi="o" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView2"
+            android:layout_below="@id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView"
+            android:justificationMode="inter_word"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="30dp"
-            android:justificationMode="inter_word"
             android:text="@string/for_now_we_are_only_on_the_region_of_denmark_but_with_everyone_s_support_and_will_to_help_we_aim_to_be_worldwide_used"
             android:textAlignment="viewStart"
             android:textSize="18sp" />

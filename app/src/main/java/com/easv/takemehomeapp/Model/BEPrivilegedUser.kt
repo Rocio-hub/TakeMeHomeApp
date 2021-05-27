@@ -3,7 +3,7 @@ package com.easv.takemehomeapp.Model
 import java.io.File
 import java.io.Serializable
 
-class BEPrivilegedUser (
+class BEPrivilegedUser(
     var id: Int,
     var username: String,
     var password: String,
@@ -13,4 +13,4 @@ class BEPrivilegedUser (
     var role: String,
     var station: String,
     var picture: File?
-): Serializable
+) : Serializable

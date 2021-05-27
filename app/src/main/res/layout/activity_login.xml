@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/relative_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
 >
 
@@ -23,8 +23,9 @@
                 android:id="@+id/logo"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/tmhlogo"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/app_logo"
+                android:src="@drawable/tmhlogo" />
 
             <TextView
                 android:id="@+id/textView"
@@ -35,7 +36,7 @@
                 android:layout_marginTop="45dp"
                 android:fontFamily="@font/allerta"
                 android:gravity="center_horizontal"
-                android:text="LOG IN"
+                android:text="@string/log_in"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -67,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:background="#FFA500"
                         android:gravity="center_horizontal"
-                        android:text="Incorrect username or password."
+                        android:text="@string/incorrect_username_or_password"
                         android:textSize="18sp"
                         android:layout_marginBottom="20dp"/>
 
@@ -75,7 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:text="Username"
+                        android:text="@string/username"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -84,14 +85,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:autofillHints="" />
 
                     <TextView
                         android:id="@+id/textView_password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:text="Password"
+                        android:text="@string/password"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -101,7 +103,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         android:inputType="textPassword"
-                        android:textColorLink="#FFFFFF" />
+                        android:textColorLink="#FFFFFF"
+                        android:autofillHints="" />
 
                 </LinearLayout>
 
@@ -128,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="16dp"
-                    android:text="submit"
+                    android:text="@string/submit"
                     android:textSize="20sp" />
 
                 <TextView
@@ -138,7 +141,8 @@
                     android:layout_marginTop="10dp"
                     android:clickable="true"
                     android:layout_gravity="center_horizontal"
-                    android:text="Don't have an account? Sign up." />
+                    android:text="@string/don_t_have_an_account_sign_up"
+                    android:focusable="true" />
 
             </LinearLayout>
 

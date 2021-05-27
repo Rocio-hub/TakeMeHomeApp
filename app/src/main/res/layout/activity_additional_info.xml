@@ -24,8 +24,12 @@
                 android:id="@+id/imageButton_profilePicture"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_margin="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/grad_login"
+                android:contentDescription="@string/profile_picture"
                 android:padding="3dp"
                 android:src="@drawable/addcameraicon" />
 
@@ -50,7 +54,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="1"
         android:background="@color/dust"
         android:gravity="center"
         android:layout_below="@id/relLay_top">
@@ -69,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="PERSONAL INFORMATION"
+                android:text="@string/personal_information"
                 android:textSize="23sp"
                 android:textStyle="bold" />
 
@@ -101,7 +104,7 @@
                     android:id="@+id/label_cpr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CPR"
+                    android:text="@string/cpr"
                     android:textSize="15sp" />
 
                 <TextView
@@ -116,7 +119,7 @@
                     android:id="@+id/button_allergies"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="List of allergies"
+                    android:text="@string/list_of_allergies"
                     android:textSize="18sp"
                     android:onClick="onClickAllergies"
                     android:layout_gravity="center_horizontal"/>
@@ -141,7 +144,7 @@
                     android:id="@+id/label_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address"
+                    android:text="@string/address"
                     android:textSize="15sp" />
 
                 <TextView
@@ -156,7 +159,7 @@
                     android:id="@+id/button_diseases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="List of diseases"
+                    android:text="@string/list_of_diseases"
                     android:textSize="18sp"
                     android:onClick="onClickDiseases"
                     android:layout_gravity="center_horizontal"/>
@@ -182,7 +185,7 @@
                     android:id="@+id/label_phoneList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="List of phone numbers"
+                    android:text="@string/list_of_phone_numbers"
                     android:textSize="15sp" />
 
                 <Spinner
@@ -194,7 +197,7 @@
                     android:id="@+id/button_medication"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="List of medicines"
+                    android:text="@string/list_of_medicines"
                     android:textSize="18sp"
                     android:onClick="onClickMedication"
                     android:layout_gravity="center_horizontal"/>
@@ -219,7 +222,7 @@
                     android:id="@+id/label_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="E-mail"
+                    android:text="@string/e_mail"
                     android:textSize="15sp" />
 
                 <TextView
