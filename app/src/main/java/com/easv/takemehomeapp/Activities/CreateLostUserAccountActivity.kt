@@ -12,6 +12,7 @@ import com.easv.takemehomeapp.Model.BEPrivilegedUser
 import com.easv.takemehomeapp.R
 import kotlinx.android.synthetic.main.activity_create_lostuser_account.*
 import java.io.File
+import java.lang.Double
 
 
 class CreateLostUserAccountActivity : AppCompatActivity() {
@@ -52,15 +53,15 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
             newUser.medicationList = medicationList
             newUser.allergiesList = allergiesList
             newUser.diseasesList = diseasesList
+            lostUserDB.createLostUser(newUser)
+            Toast.makeText(this, "New account created successfully", Toast.LENGTH_SHORT).show()
+
+            var intent = Intent(this, CodeScannerActivity::class.java)
+            intent.putExtra("loggedUser", loggedUser)
+            startActivity(intent)
         }
 
-        lostUserDB.createLostUser(newUser)
-        Toast.makeText(this, "New account created successfully", Toast.LENGTH_SHORT).show()
 
-
-        var intent = Intent(this, CodeScannerActivity::class.java)
-        intent.putExtra("loggedUser", loggedUser)
-        startActivity(intent)
 
         /*
          * TODO Check if user created exists on database already
@@ -72,15 +73,54 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_CODE)
     }
 
-    private fun validateInput(): Boolean { //Method that will verify that all information is correct before allowing the user to Create/Update friends
-        showMissingInfo()
+    private fun validateInput(): Boolean { //Method that will verify that all information is correct before allowing the user to submit
+        if (editText_fullName.text.toString() == "" || checkContainNumber(editText_fullName.text.toString())) {
+            editText_fullName.error =
+                "Please, enter a value for first name and last name."
+            return false
+        }
+        try {
+            Double.parseDouble(editText_cpr.text.toString())
+        } catch (e: NumberFormatException) {
+            editText_cpr.error =
+                "Please, enter enter a value for the CPR. It must be a number and not contain spaces."
+        }
+        if (editText_cpr.text.toString() == "" || editText_cpr.text.toString().contains(" ")) {
+            editText_cpr.error =
+                "Please, enter enter a value for the CPR. It must be a number and not contain spaces."
+            return false
+        }
+        if (editText_address.text.toString() == "") {
+            editText_address.error = "Please, enter enter a value for the address"
+            return false
+        }
+        if (editText_email.text.toString() == "" || !editText_email.text.toString().contains("@") || !editText_email.text.toString().contains(".")) {
+            editText_email.error = "Please, enter enter a value for the email."
+            return false
+        }
+        try {
+            Double.parseDouble(editText_phoneList.text.toString())
+        } catch (e: NumberFormatException) {
+            editText_phoneList.error =
+                "Please, enter enter a value for the phone numbers."
+        }
+        if (editText_phoneList.text.toString() == "") {
+            editText_phoneList.error = "Please, enter enter a value for the list of phones. Remember to separate them using a space."
+            return false
+        }
+        if (editText_medicationList.text.toString() == "") {
+            editText_medicationList.error = "Please, enter enter a value for the list of medicines. Remember to separate them using a space."
+            return false
+        }
+        if (editText_allergyList.text.toString() == "") {
+            editText_allergyList.error = "Please, enter enter a value for the list of ellergies. Remember to separate them using a space."
+            return false
+        }
+        if (editText_diseaseList.text.toString() == "") {
+            editText_diseaseList.error = "Please, enter enter a value for the list of diseases. Remember to separate them using a space."
+            return false
+        }
         return true
-    }
-
-    private fun showMissingInfo() {
-        if (editText_fullName.text.isNullOrBlank()) {
-            editText_fullName.error = "Please enter a name"
-        } else editText_fullName.error = null
     }
 
     override fun onActivityResult(
@@ -124,5 +164,15 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
         editText_diseaseList.setText(savedInstanceState.getString("diseasesList"))
         ib_profilePicture.setImageDrawable(Drawable.createFromPath(newUser.picture.toString()))
         newUser = savedInstanceState.getSerializable("newUser") as BELostUser
+    }
+
+    private fun checkContainNumber(value: String): Boolean {
+        var containNumber: Boolean = false
+        for (item in value.toCharArray()) {
+            if (Character.isDigit(item).also { containNumber = it }) {
+                break
+            }
+        }
+        return containNumber
     }
 }

@@ -52,7 +52,6 @@ class SignUpNormalUserActivity : AppCompatActivity() {
     }
 
     private fun validateInput(): Boolean {
-
         if (editText_firstName.text.toString() == "" || checkContainNumber(editText_firstName.text.toString()) || editText_firstName.text.toString()
                 .contains(" ")
         ) {
@@ -91,7 +90,6 @@ class SignUpNormalUserActivity : AppCompatActivity() {
             return false
         }
         return true
-
     }
 
     private fun onClickPicture() {
