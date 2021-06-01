@@ -179,6 +179,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
+                        android:phoneNumber="false"
                         android:textColor="#000000"
                         android:textSize="15sp" />
 

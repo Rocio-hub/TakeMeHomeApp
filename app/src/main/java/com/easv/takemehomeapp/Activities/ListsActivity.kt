@@ -45,7 +45,7 @@ internal class ListAdapter(context: Context, private val list: Array<String>) :
         context,
         0,
         list
-    ) { //Adapter that will create a new Extended Cell for each friend in the item list
+    ) { //Adapter that will create a new Extended Cell for each item in the item list
 
     override fun getView(position: Int, v: View?, parent: ViewGroup): View {
         var v1: View? = v

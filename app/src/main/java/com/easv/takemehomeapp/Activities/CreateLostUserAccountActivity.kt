@@ -68,54 +68,59 @@ class CreateLostUserAccountActivity : AppCompatActivity() {
     private fun validateInput(): Boolean { //Method that will verify that all information is correct before allowing the user to submit
         if (editText_fullName.text.toString() == "" || checkContainNumber(editText_fullName.text.toString())) {
             editText_fullName.error =
-                "Please, enter a value for first name and last name."
+                "Please, enter a valid value for first name and last name."
             return false
         }
         try {
             Double.parseDouble(editText_cpr.text.toString())
         } catch (e: NumberFormatException) {
             editText_cpr.error =
-                "Please, enter enter a value for the CPR. It must be a number and not contain spaces."
+                "Please, enter a valid value for the CPR. It must be a number and not contain spaces."
+            return false
         }
         if (editText_cpr.text.toString() == "" || editText_cpr.text.toString().contains(" ")) {
             editText_cpr.error =
-                "Please, enter enter a value for the CPR. It must be a number and not contain spaces."
+                "Please, enter a valid value for the CPR. It must be a number and not contain spaces."
             return false
         }
         if (editText_address.text.toString() == "") {
-            editText_address.error = "Please, enter enter a value for the address"
+            editText_address.error = "Please, enter a value for the address"
             return false
         }
         if (editText_email.text.toString() == "" || !editText_email.text.toString()
                 .contains("@") || !editText_email.text.toString().contains(".")
         ) {
-            editText_email.error = "Please, enter enter a value for the email."
+            editText_email.error = "Please, enter a valid value for the email."
             return false
         }
         try {
-            Double.parseDouble(editText_phoneList.text.toString())
+            var phoneList = editText_phoneList.text.toString().split(" ")
+            for(item in phoneList){
+                Double.parseDouble(item)
+            }
         } catch (e: NumberFormatException) {
             editText_phoneList.error =
-                "Please, enter enter a value for the phone numbers."
+                "Please, enter a valid value for the phone numbers."
+            return false
         }
         if (editText_phoneList.text.toString() == "") {
             editText_phoneList.error =
-                "Please, enter enter a value for the list of phones. Remember to separate them using a space."
+                "Please, enter a value for the list of phones. Remember to separate them using a space."
             return false
         }
         if (editText_medicationList.text.toString() == "") {
             editText_medicationList.error =
-                "Please, enter enter a value for the list of medicines. Remember to separate them using a space."
+                "Please, enter a value for the list of medicines. Remember to separate them using a space."
             return false
         }
         if (editText_allergyList.text.toString() == "") {
             editText_allergyList.error =
-                "Please, enter enter a value for the list of ellergies. Remember to separate them using a space."
+                "Please, enter a value for the list of ellergies. Remember to separate them using a space."
             return false
         }
         if (editText_diseaseList.text.toString() == "") {
             editText_diseaseList.error =
-                "Please, enter enter a value for the list of diseases. Remember to separate them using a space."
+                "Please, enter a value for the list of diseases. Remember to separate them using a space."
             return false
         }
         if (newUser.picture.length()<1){
